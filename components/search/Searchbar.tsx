@@ -89,7 +89,7 @@ function Searchbar({
         <form
           id="searchbar"
           action={action}
-          class="flex-grow flex gap-3 px-3 py-2 border border-base-200"
+          class="flex-grow flex gap-3 px-3  border border-base-200"
         >
           <Button
             class="btn-ghost"
@@ -194,7 +194,7 @@ function Searchbar({
                   ))}
                 </ul>
               </div>
-              <div class="flex flex-col pt-6 md:pt-0 gap-6 overflow-x-hidden">
+              <div class="flex flex-col pt-6 md:pt-0 gap-6 overflow-x-hidden flex-1">
                 <div class="flex gap-2 items-center">
                   <span
                     class="font-medium text-xl"
@@ -205,7 +205,7 @@ function Searchbar({
                   </span>
                   {loading.value && <Spinner />}
                 </div>
-                <Slider class="carousel">
+                <Slider class="carousel gap-4 ">
                   {suggestions.value!.products?.map((product, index) => (
                     <Slider.Item
                       index={index}

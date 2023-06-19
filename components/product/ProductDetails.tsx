@@ -246,7 +246,8 @@ function Details({
    */
   if (variant === "slider") {
     return (
-      <>
+     
+      <div class="">
         <div
           id={id}
           class="grid grid-cols-1 gap-4 sm:grid-cols-[max-content_40vw_40vw] sm:grid-rows-1 sm:justify-center"
@@ -299,7 +300,7 @@ function Details({
           </div>
 
           {/* Dots */}
-          <ul class="flex gap-2 sm:justify-start overflow-auto px-4 sm:px-0 sm:flex-col sm:col-start-1 sm:col-span-1 sm:row-start-1">
+          <ul class="flex gap-2 sm:justify-start overflow-auto px-4 sm:px-0 sm:flex-col sm:col-start-1 sm:col-span-1 sm:row-start-1 max-h-[42rem]">
             {images.map((img, index) => (
               <li class="min-w-[63px] sm:min-w-[100px]">
                 <Slider.Dot index={index}>
@@ -322,7 +323,7 @@ function Details({
           </div>
         </div>
         <SliderJS rootId={id}></SliderJS>
-      </>
+      </div>
     );
   }
 
