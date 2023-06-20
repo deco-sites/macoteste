@@ -84,6 +84,7 @@
               "$live/sections/UseSlot.tsx",
               "deco-sites/macoteste/sections/Category/CategoryBanner.tsx",
               "deco-sites/macoteste/sections/Category/CategoryList.tsx",
+              "deco-sites/macoteste/sections/Category/SearchResult.tsx",
               "deco-sites/macoteste/sections/Content/Benefits.tsx",
               "deco-sites/macoteste/sections/Content/Faq.tsx",
               "deco-sites/macoteste/sections/Content/Logos.tsx",
@@ -7476,6 +7477,61 @@
       "required": [],
       "title": "deco-sites/macoteste/sections/Category/CategoryList.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9wcm9kdWN0L1Byb2R1Y3RHYWxsZXJ5LnRzeA==@Columns": {
+      "type": "object",
+      "properties": {
+        "mobile": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "title": "Mobile"
+        },
+        "desktop": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "title": "Desktop"
+        }
+      },
+      "required": [],
+      "title": "Columns"
+    },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9zZWFyY2gvU2VhcmNoUmVzdWx0LnRzeA==@Props": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@ProductListingPage|null",
+          "title": "Page"
+        },
+        "variant": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "aside"
+            },
+            {
+              "type": "string",
+              "const": "drawer"
+            }
+          ],
+          "type": "string",
+          "description": "Use drawer for mobile like behavior on desktop. Aside for rendering the filters alongside the products",
+          "title": "Variant"
+        },
+        "columns": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9wcm9kdWN0L1Byb2R1Y3RHYWxsZXJ5LnRzeA==@Columns",
+          "description": "Number of products per line on grid",
+          "title": "Columns"
+        }
+      },
+      "required": [
+        "page",
+        "columns"
+      ],
+      "title": "deco-sites/macoteste/components/search/SearchResult.tsx@Props"
+    },
     "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9CZW5lZml0cy50c3g=@Props": {
       "type": "object",
       "properties": {
@@ -10518,61 +10574,6 @@
       ],
       "title": "deco-sites/macoteste/components/product/ProductShelf.tsx@Props"
     },
-    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9wcm9kdWN0L1Byb2R1Y3RHYWxsZXJ5LnRzeA==@Columns": {
-      "type": "object",
-      "properties": {
-        "mobile": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "title": "Mobile"
-        },
-        "desktop": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "title": "Desktop"
-        }
-      },
-      "required": [],
-      "title": "Columns"
-    },
-    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9zZWFyY2gvU2VhcmNoUmVzdWx0LnRzeA==@Props": {
-      "type": "object",
-      "properties": {
-        "page": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@ProductListingPage|null",
-          "title": "Page"
-        },
-        "variant": {
-          "anyOf": [
-            {
-              "type": "string",
-              "const": "aside"
-            },
-            {
-              "type": "string",
-              "const": "drawer"
-            }
-          ],
-          "type": "string",
-          "description": "Use drawer for mobile like behavior on desktop. Aside for rendering the filters alongside the products",
-          "title": "Variant"
-        },
-        "columns": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9wcm9kdWN0L1Byb2R1Y3RHYWxsZXJ5LnRzeA==@Columns",
-          "description": "Number of products per line on grid",
-          "title": "Columns"
-        }
-      },
-      "required": [
-        "page",
-        "columns"
-      ],
-      "title": "deco-sites/macoteste/components/search/SearchResult.tsx@Props"
-    },
     "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvU29jaWFsL0luc3RhZ3JhbVBvc3RzLnRzeA==@layout": {
       "type": "object",
       "properties": {
@@ -13172,6 +13173,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ2F0ZWdvcnkvU2VhcmNoUmVzdWx0LnRzeA==": {
+      "title": "deco-sites/macoteste/sections/Category/SearchResult.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9zZWFyY2gvU2VhcmNoUmVzdWx0LnRzeA==@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/macoteste/sections/Category/SearchResult.tsx"
+          ],
+          "default": "deco-sites/macoteste/sections/Category/SearchResult.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9CZW5lZml0cy50c3g=": {
       "title": "deco-sites/macoteste/sections/Content/Benefits.tsx",
       "type": "object",
@@ -14794,6 +14816,9 @@
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ2F0ZWdvcnkvQ2F0ZWdvcnlMaXN0LnRzeA=="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ2F0ZWdvcnkvU2VhcmNoUmVzdWx0LnRzeA=="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9CZW5lZml0cy50c3g="
