@@ -35,6 +35,7 @@ function Navbar({
             src={asset("/logo.png")}
             width="124px"
             height="24px"
+            alt="logo-omron"
           />
         </a>
 
@@ -53,6 +54,7 @@ function Navbar({
               src={asset("/logo.png")}
               width="124px"
               height="24px"
+              alt="logo-omron"
             />
           </a>
         </div>
