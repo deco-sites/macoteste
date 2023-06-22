@@ -26,11 +26,13 @@ input[type="number"] {
 function QuantitySelector({ onChange, quantity, disabled, loading }: Props) {
   const decrement = () => onChange?.(Math.max(0, quantity - 1));
 
-  const increment = () =>
-    onChange?.(Math.min(quantity + 1, QUANTITY_MAX_VALUE));
+  const increment = () => {
+    console.log("increment");
+    return onChange?.(Math.min(quantity + 1, QUANTITY_MAX_VALUE));
+  };
 
   return (
-    <div class="join border rounded-none">
+    <div class="join border rounded-none w-full flex justify-between">
       <Button
         class="btn-square btn-outline border-none join-item"
         onClick={decrement}

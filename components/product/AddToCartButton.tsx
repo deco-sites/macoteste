@@ -21,6 +21,7 @@ function AddToCartButton(
     productGroupId,
     name,
     innerText,
+    quantity,
   }: Props,
 ) {
   const props = useAddToCart({
@@ -30,10 +31,11 @@ function AddToCartButton(
     price,
     productGroupId,
     name,
+    quantity,
   });
 
   return (
-    <Button data-deco="add-to-cart" {...props} class="btn-primary">
+    <Button data-deco="add-to-cart" {...props} class="btn-primary w-full">
       {innerText ? innerText : "Adicionar à Sacola"}
     </Button>
   );

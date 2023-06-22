@@ -14,10 +14,11 @@ export interface Options {
    */
   name: string;
   productGroupId: string;
+  quantity?: number;
 }
 
 export const useAddToCart = (
-  { skuId, sellerId, price, discount, name, productGroupId }: Options,
+  { skuId, sellerId, price, discount, name, productGroupId, quantity }: Options,
 ) => {
   const isAddingToCart = useSignal(false);
   const { displayCart } = useUI();
@@ -42,7 +43,7 @@ export const useAddToCart = (
         params: {
           items: [{
             item_id: productGroupId,
-            quantity: 1,
+            quantity: quantity ? quantity : 1,
             price,
             discount,
             item_name: name,

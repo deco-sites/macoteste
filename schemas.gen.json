@@ -67,6 +67,7 @@
               "./islands/Newsletter.tsx",
               "./islands/OutOfStock.tsx",
               "./islands/ProductImageZoom.tsx",
+              "./islands/QuantityAddToCartButton.tsx",
               "./islands/SearchControls.tsx",
               "./islands/ShippingSimulation.tsx",
               "./islands/SliderJS.tsx",
@@ -6942,6 +6943,13 @@
             "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3MvdnRleC90eXBlcy50cw==@SKU"
           },
           "title": "Items"
+        },
+        "shippingText": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Shipping Text"
         }
       },
       "required": [
@@ -10324,12 +10332,19 @@
           "title": "Product view",
           "description": "Ask for the developer to remove this option since this is here to help development only and should not be used in production"
         },
-        "buyButtominnerText": {
+        "buyButtomText": {
           "type": [
             "string",
             "null"
           ],
-          "title": "Buy Buttominner Text"
+          "title": "Buy Buttom Text"
+        },
+        "shippingText": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Shipping Text"
         }
       },
       "required": [
@@ -12839,6 +12854,22 @@
         }
       }
     },
+    "Li9pc2xhbmRzL1F1YW50aXR5QWRkVG9DYXJ0QnV0dG9uLnRzeA==": {
+      "title": "./islands/QuantityAddToCartButton.tsx",
+      "type": "object",
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "./islands/QuantityAddToCartButton.tsx"
+          ],
+          "default": "./islands/QuantityAddToCartButton.tsx"
+        }
+      }
+    },
     "Li9pc2xhbmRzL1NlYXJjaENvbnRyb2xzLnRzeA==": {
       "title": "./islands/SearchControls.tsx",
       "type": "object",
@@ -14753,6 +14784,9 @@
         },
         {
           "$ref": "#/definitions/Li9pc2xhbmRzL1Byb2R1Y3RJbWFnZVpvb20udHN4"
+        },
+        {
+          "$ref": "#/definitions/Li9pc2xhbmRzL1F1YW50aXR5QWRkVG9DYXJ0QnV0dG9uLnRzeA=="
         },
         {
           "$ref": "#/definitions/Li9pc2xhbmRzL1NlYXJjaENvbnRyb2xzLnRzeA=="

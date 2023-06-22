@@ -1,5 +1,4 @@
 import { useId } from "preact/hooks";
-import AddToCartButton from "$store/islands/AddToCartButton.tsx";
 import ShippingSimulation from "$store/islands/ShippingSimulation.tsx";
 import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
 import Button from "$store/components/ui/Button.tsx";
@@ -15,9 +14,11 @@ import { mapProductToAnalyticsItem } from "deco-sites/std/commerce/utils/product
 import type { ProductDetailsPage } from "deco-sites/std/commerce/types.ts";
 import type { LoaderReturnType } from "$live/types.ts";
 
+import { useSignal } from "@preact/signals";
 import ProductSelector from "./ProductVariantSelector.tsx";
 import ProductImageZoom from "$store/islands/ProductImageZoom.tsx";
-import WishlistButton from "../wishlist/WishlistButton.tsx";
+
+import QuantityAddToCartButton from "../../islands/QuantityAddToCartButton.tsx";
 
 export type Variant = "front-back" | "slider" | "auto";
 
@@ -28,11 +29,12 @@ export interface Props {
    * @description Ask for the developer to remove this option since this is here to help development only and should not be used in production
    */
   variant?: Variant;
-  buyButtominnerText?: string;
+  buyButtomText?: string;
+  shippingText?: string;
 }
 
-const WIDTH = 360;
-const HEIGHT = 500;
+const WIDTH = 650;
+const HEIGHT = 650;
 const ASPECT_RATIO = `${WIDTH} / ${HEIGHT}`;
 
 /**
@@ -52,9 +54,10 @@ function NotFound() {
 }
 
 function ProductInfo(
-  { page, buyButtominnerText }: {
+  { page, buyButtomInnerText, shippingText }: {
     page: ProductDetailsPage;
-    buyButtominnerText: string;
+    buyButtomInnerText: string;
+    shippingText: string;
   },
 ) {
   const {
@@ -62,17 +65,21 @@ function ProductInfo(
     product,
   } = page;
   const {
-    description,
     productID,
     offers,
     name,
     gtin,
-    isVariantOf,
   } = product;
   const { price, listPrice, seller, installments, availability } = useOffer(
     offers,
   );
-
+  const formatInstallments = (str: string | null) => {
+    if (!str) return "";
+    const value = str.split("R$ ")[1].split(" ")[0];
+    const newValue = `${formatPrice(parseInt(value))}`;
+    str = str.replace(`R$ ${value}`, newValue);
+    return str;
+  };
   return (
     <>
       {/* Breadcrumb */}
@@ -101,7 +108,8 @@ function ProductInfo(
           </span>
         </div>
         <span class="text-sm text-base-300">
-          {installments}
+          {/* 8x de R$ 42.5 sem juros */}
+          {formatInstallments(installments)}
         </span>
       </div>
       {/* Sku Selector */}
@@ -114,14 +122,15 @@ function ProductInfo(
           ? (
             <>
               {seller && (
-                <AddToCartButton
+                <QuantityAddToCartButton
                   skuId={productID}
                   sellerId={seller}
                   price={price ?? 0}
                   discount={price && listPrice ? listPrice - price : 0}
                   name={product.name ?? ""}
                   productGroupId={product.isVariantOf?.productGroupID ?? ""}
-                  innerText={buyButtominnerText}
+                  variant={"primary"}
+                  innerText={buyButtomInnerText}
                 />
               )}
               {
@@ -143,6 +152,7 @@ function ProductInfo(
             quantity: 1,
             seller: seller ?? "1",
           }]}
+          shippingText={shippingText}
         />
       </div>
       {/* Description card */}
@@ -247,8 +257,14 @@ const useStableImages = (product: ProductDetailsPage["product"]) => {
 function Details({
   page,
   variant,
-  buyButtominnerText,
-}: { page: ProductDetailsPage; variant: Variant; buyButtominnerText: string }) {
+  buyButtomInnerText,
+  shippingText,
+}: {
+  page: ProductDetailsPage;
+  variant: Variant;
+  buyButtomInnerText: string;
+  shippingText: string;
+}) {
   const { product } = page;
   const id = `product-image-gallery:${useId()}`;
   const images = useStableImages(product);
@@ -276,8 +292,8 @@ function Details({
                   class="carousel-item w-full"
                 >
                   <Image
-                    class="w-full"
-                    sizes="(max-width: 640px) 100vw, 40vw"
+                    class="w-full max-w-[650px]"
+                    sizes="(max-width: 650px) 100vw, 40vw"
                     style={{ aspectRatio: ASPECT_RATIO }}
                     src={img.url!}
                     alt={img.alternateName}
@@ -334,7 +350,11 @@ function Details({
 
           {/* Product Info */}
           <div class="px-4 sm:pr-0 sm:pl-6 sm:col-start-3 sm:col-span-1 sm:row-start-1">
-            <ProductInfo page={page} buyButtominnerText={buyButtominnerText} />
+            <ProductInfo
+              page={page}
+              buyButtomInnerText={buyButtomInnerText}
+              shippingText={shippingText}
+            />
           </div>
         </div>
         <SliderJS rootId={id}></SliderJS>
@@ -386,14 +406,23 @@ function Details({
 
       {/* Product Info */}
       <div class="px-4 sm:pr-0 sm:pl-6">
-        <ProductInfo page={page} buyButtominnerText={buyButtominnerText} />
+        <ProductInfo
+          page={page}
+          buyButtomInnerText={buyButtomInnerText}
+          shippingText={shippingText}
+        />
       </div>
     </div>
   );
 }
 
 function ProductDetails(
-  { page, variant: maybeVar = "auto", buyButtominnerText }: Props,
+  {
+    page,
+    variant: maybeVar = "auto",
+    buyButtomText = "Adicionar à Sacola",
+    shippingText = "Calcular Frete",
+  }: Props,
 ) {
   /**
    * Showcase the different product views we have on this template. In case there are less
@@ -413,9 +442,8 @@ function ProductDetails(
           <Details
             page={page}
             variant={variant}
-            buyButtominnerText={buyButtominnerText
-              ? buyButtominnerText
-              : "Adicionar à Sacola"}
+            buyButtomInnerText={buyButtomText}
+            shippingText={shippingText}
           />
         )
         : <NotFound />}

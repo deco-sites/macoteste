@@ -11,6 +11,7 @@ import type {
 
 export interface Props {
   items: Array<SKU>;
+  shippingText?: string;
 }
 
 const formatShippingEstimate = (estimate: string) => {
@@ -72,7 +73,7 @@ function ShippingContent({ simulation }: {
   );
 }
 
-function ShippingSimulation({ items }: Props) {
+function ShippingSimulation({ items, shippingText }: Props) {
   const postalCode = useSignal("");
   const loading = useSignal(false);
   const simulateResult = useSignal<SimulationOrderForm | null>(null);
@@ -98,10 +99,12 @@ function ShippingSimulation({ items }: Props) {
   return (
     <div class="flex flex-col gap-2">
       <div class="flex flex-col">
-        <span>Calcular frete</span>
-        <span>
+        <span>{shippingText ? shippingText : "Calcular Frete"}</span>
+        {
+          /* <span>
           Informe seu CEP para consultar os prazos de entrega
-        </span>
+        </span> */
+        }
       </div>
       <div>
         <form
