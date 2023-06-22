@@ -49,7 +49,7 @@ const relative = (url: string) => {
 };
 
 const WIDTH = 200;
-const HEIGHT = 279;
+const HEIGHT = 200;
 
 function ProductCard({ product, preload, itemListName, layout }: Props) {
   const {
@@ -90,7 +90,9 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
       {l?.basics?.ctaText || "Ver produto"}
     </a>
   );
-
+  function stripHTMLTags(htmlContent: string) {
+    return htmlContent.replace(/<[^>]+>/g, "");
+  }
   return (
     <div
       id={id}
@@ -134,10 +136,12 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
           }
         `}
         >
-          <WishlistIcon
+          {
+            /* <WishlistIcon
             productGroupID={productGroupID}
             productID={productID}
-          />
+          /> */
+          }
         </div>
         {/* Product Images */}
         <a
@@ -231,13 +235,19 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
                     {name}
                   </h2>
                 )}
-              {l?.hide.productDescription
-                ? ""
-                : (
-                  <p class="truncate text-sm lg:text-sm text-neutral">
-                    {product.description}
-                  </p>
-                )}
+              {l?.hide.productDescription ? "" : (
+                <p
+                  class="truncate text-sm lg:text-sm text-neutral"
+                  dangerouslySetInnerHTML={{
+                    __html: product.description
+                      ? stripHTMLTags(
+                        product.description,
+                      )
+                      : "",
+                  }}
+                >
+                </p>
+              )}
             </div>
           )}
         {l?.hide.allPrices ? "" : (
@@ -302,3 +312,16 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
 }
 
 export default ProductCard;
+
+{
+  /*
+https://site.omronbrasil.com/uploads/attachment/fca5d4d0135c84f596a301167936556781455cb73x-png.png
+https://site.omronbrasil.com/uploads/attachment/0e588745fe1d447bd756c276bddca4402f59e535RPM-png.png
+https://site.omronbrasil.com/uploads/attachment/84b5db3d447e866430cbc0db55641232c78eb26drefil-png.png
+https://site.omronbrasil.com/uploads/attachment/10fb99a7e4d159482a6ff9f155d825808a4980bccerdas-png.png
+https://site.omronbrasil.com/uploads/attachment/c8a2395ed9a5b516f53220b04d9c30cee0b21538silencioso-png.png
+https://site.omronbrasil.com/uploads/attachment/a68cbed3e095008e5ead888a5cf6457c4e009f33PROVA-DAGUA-png.png
+https://site.omronbrasil.com/uploads/attachment/1d8d85d405370b3c0fa065a8a5857765abfbf80cpilha-png.png
+https://site.omronbrasil.com/uploads/attachment/7685e200edf2ef5ff7dd44d15bfedc6ae8fc6fcdgarantia-png.png
+ */
+}

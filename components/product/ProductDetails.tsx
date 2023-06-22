@@ -28,6 +28,7 @@ export interface Props {
    * @description Ask for the developer to remove this option since this is here to help development only and should not be used in production
    */
   variant?: Variant;
+  buyButtominnerText?: string;
 }
 
 const WIDTH = 360;
@@ -50,7 +51,12 @@ function NotFound() {
   );
 }
 
-function ProductInfo({ page }: { page: ProductDetailsPage }) {
+function ProductInfo(
+  { page, buyButtominnerText }: {
+    page: ProductDetailsPage;
+    buyButtominnerText: string;
+  },
+) {
   const {
     breadcrumbList,
     product,
@@ -115,13 +121,16 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
                   discount={price && listPrice ? listPrice - price : 0}
                   name={product.name ?? ""}
                   productGroupId={product.isVariantOf?.productGroupID ?? ""}
+                  innerText={buyButtominnerText}
                 />
               )}
-              <WishlistButton
+              {
+                /* <WishlistButton
                 variant="full"
                 productGroupID={isVariantOf?.productGroupID}
                 productID={productID}
-              />
+              /> */
+              }
             </>
           )
           : <OutOfStock productID={productID} />}
@@ -137,7 +146,8 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
         />
       </div>
       {/* Description card */}
-      <div class="mt-4 sm:mt-6">
+      {
+        /* <div class="mt-4 sm:mt-6">
         <span class="text-sm">
           {description && (
             <details>
@@ -150,7 +160,8 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
             </details>
           )}
         </span>
-      </div>
+      </div> */
+      }
       {/* Analytics Event */}
       <SendEventOnLoad
         event={{
@@ -236,7 +247,8 @@ const useStableImages = (product: ProductDetailsPage["product"]) => {
 function Details({
   page,
   variant,
-}: { page: ProductDetailsPage; variant: Variant }) {
+  buyButtominnerText,
+}: { page: ProductDetailsPage; variant: Variant; buyButtominnerText: string }) {
   const { product } = page;
   const id = `product-image-gallery:${useId()}`;
   const images = useStableImages(product);
@@ -322,10 +334,25 @@ function Details({
 
           {/* Product Info */}
           <div class="px-4 sm:pr-0 sm:pl-6 sm:col-start-3 sm:col-span-1 sm:row-start-1">
-            <ProductInfo page={page} />
+            <ProductInfo page={page} buyButtominnerText={buyButtominnerText} />
           </div>
         </div>
         <SliderJS rootId={id}></SliderJS>
+
+        <div class="mt-4 sm:mt-6">
+          <span class="text-sm">
+            {page.product.description && (
+              <details>
+                <summary class="cursor-pointer">Descrição</summary>
+                <div
+                  class="ml-2 mt-2"
+                  dangerouslySetInnerHTML={{ __html: page.product.description }}
+                >
+                </div>
+              </details>
+            )}
+          </span>
+        </div>
       </div>
     );
   }
@@ -359,13 +386,15 @@ function Details({
 
       {/* Product Info */}
       <div class="px-4 sm:pr-0 sm:pl-6">
-        <ProductInfo page={page} />
+        <ProductInfo page={page} buyButtominnerText={buyButtominnerText} />
       </div>
     </div>
   );
 }
 
-function ProductDetails({ page, variant: maybeVar = "auto" }: Props) {
+function ProductDetails(
+  { page, variant: maybeVar = "auto", buyButtominnerText }: Props,
+) {
   /**
    * Showcase the different product views we have on this template. In case there are less
    * than two images, render a front-back, otherwhise render a slider
@@ -379,7 +408,17 @@ function ProductDetails({ page, variant: maybeVar = "auto" }: Props) {
 
   return (
     <div class="container py-0 sm:py-10">
-      {page ? <Details page={page} variant={variant} /> : <NotFound />}
+      {page
+        ? (
+          <Details
+            page={page}
+            variant={variant}
+            buyButtominnerText={buyButtominnerText
+              ? buyButtominnerText
+              : "Adicionar à Sacola"}
+          />
+        )
+        : <NotFound />}
     </div>
   );
 }

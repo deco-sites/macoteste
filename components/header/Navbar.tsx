@@ -71,13 +71,15 @@ function Navbar({
           >
             <Icon id="User" width={20} height={20} strokeWidth={0.4} />
           </a>
-          <a
+          {
+            /* <a
             class="btn btn-circle btn-sm btn-ghost"
             href="/wishlist"
             aria-label="Wishlist"
           >
             <Icon id="Heart" size={20} strokeWidth={2} fill="none" />
-          </a>
+          </a> */
+          }
           <Buttons variant="cart" />
         </div>
       </div>

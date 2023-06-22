@@ -10323,6 +10323,13 @@
           "type": "string",
           "title": "Product view",
           "description": "Ask for the developer to remove this option since this is here to help development only and should not be used in production"
+        },
+        "buyButtominnerText": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Buy Buttominner Text"
         }
       },
       "required": [

@@ -38,7 +38,8 @@ function Menu({ items }: Props) {
       </ul>
 
       <ul class="flex flex-col py-2 bg-base-200">
-        <li>
+        {
+          /* <li>
           <a
             class="flex items-center gap-4 px-4 py-2"
             href="/wishlist"
@@ -46,7 +47,8 @@ function Menu({ items }: Props) {
             <Icon id="Heart" width={20} height={20} strokeWidth={2} />
             <span class="text-sm">Lista de desejos</span>
           </a>
-        </li>
+        </li> */
+        }
         <li>
           <a
             class="flex items-center gap-4 px-4 py-2"
