@@ -16,7 +16,7 @@ function SearchButton() {
         displaySearchbar.value = !displaySearchbar.peek();
       }}
     >
-      <Icon id="MagnifyingGlass" width={20} height={20} strokeWidth={0.1} />
+      <Icon id="MagnifyingGlass" width={27} height={27} strokeWidth={0.1} />
     </Button>
   );
 }
@@ -77,7 +77,7 @@ function CartButton() {
           </span>
         )}
         {!loading.value && (
-          <Icon id="ShoppingCart" width={20} height={20} strokeWidth={2} />
+          <Icon id="ShoppingCart" width={27} height={27} strokeWidth={2} />
         )}
       </div>
     </Button>

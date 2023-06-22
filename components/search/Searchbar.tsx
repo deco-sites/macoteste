@@ -100,7 +100,7 @@ function Searchbar({
             <Icon
               class="text-base-300"
               id="MagnifyingGlass"
-              size={20}
+              size={27}
               strokeWidth={0.01}
             />
           </Button>
@@ -182,7 +182,7 @@ function Searchbar({
                         <span>
                           <Icon
                             id="MagnifyingGlass"
-                            size={20}
+                            size={27}
                             strokeWidth={0.01}
                           />
                         </span>

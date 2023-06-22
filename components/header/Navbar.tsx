@@ -33,8 +33,8 @@ function Navbar({
           <img
             class="object-cover"
             src={asset("/logo.png")}
-            width="124px"
-            height="24px"
+            width="165px"
+            height="32px"
             alt="logo-omron"
           />
         </a>
@@ -48,12 +48,12 @@ function Navbar({
       {/* Desktop Version */}
       <div class="hidden md:flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6">
         <div class="flex-none w-44">
-          <a href="/" aria-label="Store logo" class="block px-4 py-3 w-[160px]">
+          <a href="/" aria-label="Store logo" class="block   w-[181px]">
             <img
-              class="object-cover"
+              class="object-cover]"
               src={asset("/logo.png")}
-              width="124px"
-              height="24px"
+              width="181px"
+              height="35px"
               alt="logo-omron"
             />
           </a>
@@ -69,7 +69,7 @@ function Navbar({
             href="/login"
             aria-label="Log in"
           >
-            <Icon id="User" width={20} height={20} strokeWidth={0.4} />
+            <Icon id="User" width={27} height={27} strokeWidth={0.4} />
           </a>
           {
             /* <a
