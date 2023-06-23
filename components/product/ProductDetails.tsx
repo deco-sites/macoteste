@@ -76,7 +76,7 @@ function ProductInfo(
   const formatInstallments = (str: string | null) => {
     if (!str) return "";
     const value = str.split("R$ ")[1].split(" ")[0];
-    const newValue = `${formatPrice(parseInt(value))}`;
+    const newValue = `${formatPrice(parseFloat(value))}`;
     str = str.replace(`R$ ${value}`, newValue);
     return str;
   };

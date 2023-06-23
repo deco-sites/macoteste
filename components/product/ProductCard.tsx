@@ -96,7 +96,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
   return (
     <div
       id={id}
-      class={`card card-compact group w-full ${
+      class={`card card-compact group w-full h-full ${
         align === "center" ? "text-center" : "text-start"
       } ${l?.onMouseOver?.showCardShadow ? "lg:hover:card-bordered" : ""}`}
       data-deco="view-product"
@@ -260,7 +260,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
               } ${align === "center" ? "justify-center" : "justify-start"}`}
             >
               <div
-                class={`line-through text-base-300 text-xs ${
+                class={`line-through text-neutral text-xs ${
                   l?.basics?.oldPriceSize === "Normal" ? "lg:text-xl" : ""
                 }`}
               >
@@ -273,7 +273,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
             {!installments
               ? ""
               : (
-                <div class="text-base-300 text-sm lg:text-base">
+                <div class="text-neutral text-sm lg:text-base">
                   ou {installments}
                 </div>
               )}
