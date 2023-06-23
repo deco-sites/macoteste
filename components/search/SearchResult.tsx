@@ -54,35 +54,55 @@ function Result({
             <ProductGallery products={products} />
           </div>
         </div>
+        {pageInfo.previousPage || pageInfo.nextPage
+          ? (
+            <div class="flex justify-center my-4">
+              <div class="join">
+                <a
+                  aria-label="previous page link"
+                  rel="prev"
+                  href={pageInfo.previousPage}
+                  class={`btn btn-ghost join-item ${
+                    pageInfo.previousPage
+                      ? ""
+                      : "pointer-events-none opacity-10"
+                  }`}
+                >
+                  <Icon
+                    id="ChevronLeft"
+                    width={20}
+                    height={20}
+                    strokeWidth={2}
+                  />
+                </a>
 
-        <div class="flex justify-center my-4">
-          <div class="join">
-            <a
-              aria-label="previous page link"
-              rel="prev"
-              href={pageInfo.previousPage ?? "#"}
-              class="btn btn-ghost join-item"
-            >
-              <Icon id="ChevronLeft" width={20} height={20} strokeWidth={2} />
-            </a>
-            <span class="btn btn-ghost join-item">
-              Page {pageInfo.currentPage + 1}
-            </span>
-            <a
-              aria-label="next page link"
-              rel="next"
-              href={pageInfo.nextPage ?? "#"}
-              class="btn btn-ghost join-item"
-            >
-              <Icon
-                id="ChevronRight"
-                width={20}
-                height={20}
-                strokeWidth={2}
-              />
-            </a>
-          </div>
-        </div>
+                <span class="btn btn-ghost join-item hover:bg-transparent bg-transparent">
+                  Página {pageInfo.currentPage}
+
+                  {pageInfo.records && pageInfo.recordPerPage
+                    ? `/${Math.ceil(pageInfo.records / pageInfo.recordPerPage)}`
+                    : null}
+                </span>
+
+                <a
+                  aria-label="next page link"
+                  rel="next"
+                  href={pageInfo.nextPage}
+                  class={`btn btn-ghost join-item ${
+                    pageInfo.nextPage ? "" : "pointer-events-none opacity-10"
+                  }`}
+                >
+                  <Icon
+                    id="ChevronRight"
+                    width={20}
+                    height={20}
+                    strokeWidth={2}
+                  />
+                </a>
+              </div>
+            </div>
+          )
+          : null}
       </div>
       <SendEventOnLoad
         event={{

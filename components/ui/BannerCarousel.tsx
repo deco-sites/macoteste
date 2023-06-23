@@ -50,7 +50,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
     <a
       href={action?.href ?? "#"}
       aria-label={action?.label}
-      class="relative h-[600px] overflow-y-hidden w-full"
+      class="relative overflow-y-hidden w-full"
     >
       <Picture preload={lcp}>
         <Source
@@ -58,17 +58,16 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
           fetchPriority={lcp ? "high" : "auto"}
           src={mobile}
           width={360}
-          height={600}
         />
         <Source
           media="(min-width: 768px)"
           fetchPriority={lcp ? "high" : "auto"}
           src={desktop}
           width={1440}
-          height={600}
         />
+
         <img
-          class="object-cover w-full h-full"
+          class=" w-full h-auto"
           loading={lcp ? "eager" : "lazy"}
           src={desktop}
           alt={alt}
@@ -124,7 +123,9 @@ function Dots({ images, interval = 0 }: Props) {
 function Buttons() {
   return (
     <>
-      <div class="flex items-center justify-center z-10 col-start-1 row-start-2">
+      <div class="flex items-center justify-center z-10 
+      absolute top-1/2 translate-y-[-15px] left-4
+      ">
         <Slider.PrevButton class="btn btn-circle glass">
           <Icon
             class="text-base-100"
@@ -134,7 +135,9 @@ function Buttons() {
           />
         </Slider.PrevButton>
       </div>
-      <div class="flex items-center justify-center z-10 col-start-3 row-start-2">
+      <div class="flex items-center justify-center z-10 
+            absolute top-1/2 translate-y-[-15px] right-4
+      ">
         <Slider.NextButton class="btn btn-circle glass">
           <Icon
             class="text-base-100"
@@ -154,7 +157,7 @@ function BannerCarousel({ images, preload, interval }: Props) {
   return (
     <div
       id={id}
-      class="grid grid-cols-[48px_1fr_48px] sm:grid-cols-[120px_1fr_120px] grid-rows-[1fr_48px_1fr_64px]"
+      class="grid grid-cols-[48px_1fr_48px] sm:grid-cols-[120px_1fr_120px] grid-rows-[1fr_48px_1fr_64px] relative"
     >
       <Slider class="carousel carousel-center w-full col-span-full row-span-full scrollbar-none gap-6">
         {images?.map((image, index) => (
@@ -163,10 +166,11 @@ function BannerCarousel({ images, preload, interval }: Props) {
           </Slider.Item>
         ))}
       </Slider>
+      {images?.length != undefined && images?.length > 1 ? <Buttons /> : null}
 
-      <Buttons />
-
-      <Dots images={images} interval={interval} />
+      {images?.length != undefined && images?.length > 1
+        ? <Dots images={images} interval={interval} />
+        : null}
 
       <SliderJS rootId={id} interval={interval && interval * 1e3} infinite />
     </div>
