@@ -140,13 +140,13 @@ function Banner(
       <Picture>
         <Source
           width={190}
-          height={190}
+          height={undefined}
           media="(max-width: 767px)"
           src={srcMobile}
         />
         <Source
-          width={640}
-          height={420}
+          width={630}
+          height={undefined}
           media="(min-width: 768px)"
           src={srcDesktop || srcMobile}
         />
@@ -189,7 +189,7 @@ export default function Gallery(props: Props) {
         description={description}
         alignment={layout?.headerAlignment || "center"}
       />
-      <ul class="grid grid-flow-col grid-cols-2 grid-rows-6 gap-4 list-none">
+      <ul class="grid grid-flow-col grid-cols-2 grid-rows-5 gap-4 list-none">
         {banners?.map((banner, index) => (
           <li class={`${mobileItemLayout(index)} ${desktopItemLayout(index)}`}>
             <Banner {...banner} borderRadius={props.layout?.borderRadius} />
