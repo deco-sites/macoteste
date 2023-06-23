@@ -60,19 +60,10 @@ function ProductInfo(
     shippingText: string;
   },
 ) {
-  const {
-    breadcrumbList,
-    product,
-  } = page;
-  const {
-    productID,
-    offers,
-    name,
-    gtin,
-  } = product;
-  const { price, listPrice, seller, installments, availability } = useOffer(
-    offers,
-  );
+  const { breadcrumbList, product, } = page;
+  const { productID, offers, name, gtin, } = product;
+  const { price, listPrice, seller, installments, availability } = useOffer( offers,"MCQ" );
+
   const formatInstallments = (str: string | null) => {
     if (!str) return "";
     const value = str.split("R$ ")[1].split(" ")[0];

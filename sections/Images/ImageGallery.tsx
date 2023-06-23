@@ -2,6 +2,9 @@ import { Picture, Source } from "deco-sites/std/components/Picture.tsx";
 import Header from "$store/components/ui/SectionHeader.tsx";
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 
+/**
+ * @titleBy alt
+ */
 export interface Banner {
   srcMobile: LiveImage;
   srcDesktop?: LiveImage;
@@ -32,7 +35,31 @@ export interface Props {
    * @maxItems 4
    * @minItems 4
    */
+  /** @description Add 4 images */
   banners?: Banner[];
+  /** @description Set sizes in px to not crop images if they don't match their container size */
+  imagesSizes?: {
+    mobile?: {
+      largerImage: {
+        height: number;
+        width: number;
+      }
+      smallerImage: {
+        height: number;
+        width: number;
+      };
+    }
+    desktop?: {
+      largerImage: {
+        height: number;
+        width: number;
+      }
+      smallerImage: {
+        height: number;
+        width: number;
+      };
+    }
+  }
   layout?: {
     /**
      * @description Aplique borda a sua imagem
@@ -44,8 +71,8 @@ export interface Props {
       desktop?: BorderRadius;
     };
     headerAlignment?: "center" | "left";
-    mobile?: "Asymmetric" | "Symmetrical";
-    desktop?: "Asymmetric" | "Symmetrical";
+    autosizeMobile?: "Asymmetric" | "Symmetrical";
+    autosizeDesktop?: "Asymmetric" | "Symmetrical";
   };
 }
 
@@ -100,9 +127,9 @@ const DEFAULT_PROPS: Props = {
     },
     {
       "srcMobile":
-        "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/239/86de29ff-9bee-4051-960d-14a72f346b9e",
+        "https://ik.imagekit.io/decocx/tr:w-1280,h-800/https:/ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/1542/c218539d-aad8-474e-b0d5-ae9dd59fdd41",
       "srcDesktop":
-        "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/239/92fa4c80-5eac-462e-abb6-f2e91fac7de6",
+        "https://ik.imagekit.io/decocx/tr:w-1280,h-800/https:/ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/1542/c218539d-aad8-474e-b0d5-ae9dd59fdd41",
       "alt": "Capybara",
       "href": "https://en.wikipedia.org/wiki/Capybara",
     },
@@ -113,8 +140,8 @@ const DEFAULT_PROPS: Props = {
       "desktop": "2xl",
     },
     "headerAlignment": "center",
-    "mobile": "Asymmetric",
-    "desktop": "Asymmetric",
+    "autosizeMobile": "Asymmetric",
+    "autosizeDesktop": "Asymmetric",
   },
 };
 
@@ -126,6 +153,17 @@ function Banner(
       /** @default none */
       desktop?: BorderRadius;
     };
+    type: string;
+    sizeMobile?: {
+      height: number;
+      width: number;
+    };
+    sizeDesktop?: {
+      height: number;
+      width: number;
+    };
+    mobile: string;
+    desktop: string;
   },
 ) {
   const { borderRadius, srcMobile, srcDesktop, alt } = props;
@@ -139,19 +177,19 @@ function Banner(
     >
       <Picture>
         <Source
-          width={190}
-          height={undefined}
+          width={props.sizeMobile ? props.sizeMobile.width : 400}
+          height={props.sizeMobile ? props.sizeMobile.height : props.type === "large" ? 400 : props.mobile == "Symmetrical" ? 400 : 220}
           media="(max-width: 767px)"
           src={srcMobile}
         />
         <Source
-          width={630}
-          height={undefined}
+          width={props.sizeDesktop ? props.sizeDesktop.width : 640}
+          height={props.sizeDesktop ? props.sizeDesktop.height : props.type === "large" ? 640 : props.desktop == "Symmetrical" ? 640 : 400}
           media="(min-width: 768px)"
           src={srcDesktop || srcMobile}
         />
         <img
-          class="w-full h-full object-cover"
+          class={`w-full object-cover"}`}
           src={srcMobile}
           alt={alt}
           decoding="async"
@@ -163,24 +201,10 @@ function Banner(
 }
 
 export default function Gallery(props: Props) {
-  const { title, description, banners, layout } = {
+  const { title, description, banners, imagesSizes, layout } = {
     ...DEFAULT_PROPS,
     ...props,
   };
-
-  const mobileItemLayout = (index: number) =>
-    layout?.mobile === "Symmetrical"
-      ? "row-span-3"
-      : index === 0 || index === 3
-      ? "row-span-3"
-      : "row-span-2";
-
-  const desktopItemLayout = (index: number) =>
-    layout?.desktop === "Symmetrical"
-      ? "sm:row-span-3"
-      : index === 0 || index === 3
-      ? "sm:row-span-3"
-      : "sm:row-span-2";
 
   return (
     <section class="container px-4 py-8 flex flex-col gap-8 lg:gap-10 lg:py-10 lg:px-0">
@@ -189,13 +213,48 @@ export default function Gallery(props: Props) {
         description={description}
         alignment={layout?.headerAlignment || "center"}
       />
-      <ul class="grid grid-flow-col grid-cols-2 grid-rows-5 gap-4 list-none">
-        {banners?.map((banner, index) => (
-          <li class={`${mobileItemLayout(index)} ${desktopItemLayout(index)}`}>
-            <Banner {...banner} borderRadius={props.layout?.borderRadius} />
-          </li>
-        ))}
-      </ul>
+      <div class="flex gap-4 flex-col md:flex-row">
+        <div class="flex flex-col gap-4 w-full md:w-1/2">
+          {banners?.map((banner, index) => (
+            <>
+              {
+                index < 2 && (
+                  <Banner
+                    {...banner}
+                    borderRadius={props.layout?.borderRadius}
+                    type={index % 2 == 0 ? "large" : "small"}
+                    sizeMobile={index % 2 == 0 ? imagesSizes?.mobile?.largerImage : imagesSizes?.mobile?.smallerImage}
+                    sizeDesktop={index % 2 == 0 ? imagesSizes?.desktop?.largerImage : imagesSizes?.desktop?.smallerImage}
+                    mobile={layout?.autosizeMobile || "Asymmetric"}
+                    desktop={layout?.autosizeDesktop || "Asymmetric"}
+                  />
+                )
+              }
+            </>
+          ))}
+        </div>
+        <div class="flex flex-col gap-4 w-full md:w-1/2">
+          {banners?.map((banner, index) => (
+            <>
+              {
+                index >= 2 && (
+
+                  <Banner
+                    {...banner}
+                    borderRadius={props.layout?.borderRadius}
+                    type={index % 2 != 0 ? "large" : "small"}
+                    sizeMobile={index % 2 != 0 ? imagesSizes?.mobile?.largerImage : imagesSizes?.mobile?.smallerImage}
+                    sizeDesktop={index % 2 != 0 ? imagesSizes?.desktop?.largerImage : imagesSizes?.desktop?.smallerImage}
+                    mobile={layout?.autosizeMobile || "Asymmetric"}
+                    desktop={layout?.autosizeDesktop || "Asymmetric"}
+                  />
+                )
+              }
+            </>
+          ))}
+        </div>
+
+      </div>
     </section>
   );
 }

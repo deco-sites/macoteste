@@ -196,7 +196,6 @@ function Slider({
     interval,
     infinite,
   ]);
-
   return <div data-slider-controller-js />;
 }
 

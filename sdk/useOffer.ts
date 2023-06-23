@@ -50,8 +50,11 @@ const installmentToString = (
   }`;
 };
 
-export const useOffer = (aggregateOffer?: AggregateOffer) => {
-  const offer = aggregateOffer?.offers[0];
+export const useOffer = (aggregateOffer?: AggregateOffer,filterBySeller?:string) => {
+  let offer = aggregateOffer?.offers[0];
+  if(filterBySeller){
+    offer = aggregateOffer?.offers.find((offer) => offer.seller === filterBySeller);
+  }
   const listPrice = offer?.priceSpecification.find((spec) =>
     spec.priceType === "https://schema.org/ListPrice"
   );

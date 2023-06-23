@@ -6699,7 +6699,8 @@
         "pathTemplate",
         "handler"
       ],
-      "title": "Route"
+      "title": "Route",
+      "titleBy": "pathTemplate"
     },
     "ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Route[]": {
       "anyOf": [
@@ -9377,7 +9378,8 @@
         "alt",
         "href"
       ],
-      "title": "Banner"
+      "title": "Banner",
+      "titleBy": "alt"
     },
     "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvSW1hZ2VzL0ltYWdlR2FsbGVyeS50c3g=@Banner[]": {
       "type": "array",
@@ -9405,9 +9407,108 @@
         },
         "banners": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvSW1hZ2VzL0ltYWdlR2FsbGVyeS50c3g=@Banner[]",
-          "maxItems": 4,
-          "minItems": 4,
+          "description": "Add 4 images",
           "title": "Banners"
+        },
+        "imagesSizes": {
+          "type": "object",
+          "properties": {
+            "mobile": {
+              "type": "object",
+              "properties": {
+                "largerImage": {
+                  "type": "object",
+                  "properties": {
+                    "height": {
+                      "type": "number",
+                      "title": "Height"
+                    },
+                    "width": {
+                      "type": "number",
+                      "title": "Width"
+                    }
+                  },
+                  "required": [
+                    "height",
+                    "width"
+                  ],
+                  "title": "Larger Image"
+                },
+                "smallerImage": {
+                  "type": "object",
+                  "properties": {
+                    "height": {
+                      "type": "number",
+                      "title": "Height"
+                    },
+                    "width": {
+                      "type": "number",
+                      "title": "Width"
+                    }
+                  },
+                  "required": [
+                    "height",
+                    "width"
+                  ],
+                  "title": "Smaller Image"
+                }
+              },
+              "required": [
+                "largerImage",
+                "smallerImage"
+              ],
+              "title": "Mobile"
+            },
+            "desktop": {
+              "type": "object",
+              "properties": {
+                "largerImage": {
+                  "type": "object",
+                  "properties": {
+                    "height": {
+                      "type": "number",
+                      "title": "Height"
+                    },
+                    "width": {
+                      "type": "number",
+                      "title": "Width"
+                    }
+                  },
+                  "required": [
+                    "height",
+                    "width"
+                  ],
+                  "title": "Larger Image"
+                },
+                "smallerImage": {
+                  "type": "object",
+                  "properties": {
+                    "height": {
+                      "type": "number",
+                      "title": "Height"
+                    },
+                    "width": {
+                      "type": "number",
+                      "title": "Width"
+                    }
+                  },
+                  "required": [
+                    "height",
+                    "width"
+                  ],
+                  "title": "Smaller Image"
+                }
+              },
+              "required": [
+                "largerImage",
+                "smallerImage"
+              ],
+              "title": "Desktop"
+            }
+          },
+          "required": [],
+          "title": "Images Sizes",
+          "description": "Set sizes in px to not crop images if they don't match their container size"
         },
         "layout": {
           "type": "object",
@@ -9509,7 +9610,7 @@
               "type": "string",
               "title": "Header Alignment"
             },
-            "mobile": {
+            "autosizeMobile": {
               "anyOf": [
                 {
                   "type": "string",
@@ -9521,9 +9622,9 @@
                 }
               ],
               "type": "string",
-              "title": "Mobile"
+              "title": "Autosize Mobile"
             },
-            "desktop": {
+            "autosizeDesktop": {
               "anyOf": [
                 {
                   "type": "string",
@@ -9535,7 +9636,7 @@
                 }
               ],
               "type": "string",
-              "title": "Desktop"
+              "title": "Autosize Desktop"
             }
           },
           "required": [],

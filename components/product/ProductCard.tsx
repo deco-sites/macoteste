@@ -52,18 +52,12 @@ const WIDTH = 200;
 const HEIGHT = 200;
 
 function ProductCard({ product, preload, itemListName, layout }: Props) {
-  const {
-    url,
-    productID,
-    name,
-    image: images,
-    offers,
-    isVariantOf,
-  } = product;
+  const { url, productID, name, image: images, offers, isVariantOf } = product;
+
   const id = `product-card-${productID}`;
   const productGroupID = isVariantOf?.productGroupID;
   const [front, back] = images ?? [];
-  const { listPrice, price, installments } = useOffer(offers);
+  const { listPrice, price, installments,availability } = useOffer(offers,"MCQ");
   const possibilities = useVariantPossibilities(product);
   const variants = Object.entries(Object.values(possibilities)[0] ?? {});
   const l = layout;
@@ -71,34 +65,34 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
     !l?.basics?.contentAlignment || l?.basics?.contentAlignment == "Left"
       ? "left"
       : "center";
+
   const skuSelector = variants.map(([value, [link]]) => (
     <li>
       <a href={link}>
-        <Avatar
-          variant={link === url ? "active" : "default"}
-          content={value}
-        />
+        <Avatar variant={link === url ? "active" : "default"} content={value} />
       </a>
     </li>
   ));
+
   const cta = (
     <a
       href={url && relative(url)}
       aria-label="view product"
       class="btn btn-block bg-btnDhelf text-white hover:bg-btnHover"
     >
-      {l?.basics?.ctaText || "Ver produto"}
+      {availability === "https://schema.org/InStock"?(l?.basics?.ctaText || "Ver produto"):"Indisponível"}
     </a>
   );
+
   function stripHTMLTags(htmlContent: string) {
     return htmlContent.replace(/<[^>]+>/g, "");
   }
+
   return (
     <div
       id={id}
-      class={`card card-compact group w-full h-full ${
-        align === "center" ? "text-center" : "text-start"
-      } ${l?.onMouseOver?.showCardShadow ? "lg:hover:card-bordered" : ""}`}
+      class={`card card-compact group w-full h-full ${align === "center" ? "text-center" : "text-start"
+        } ${l?.onMouseOver?.showCardShadow ? "lg:hover:card-bordered" : ""}`}
       data-deco="view-product"
     >
       <SendEventOnClick
@@ -117,23 +111,18 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
           },
         }}
       />
-      <figure
-        class="relative "
-        style={{ aspectRatio: `${WIDTH} / ${HEIGHT}` }}
-      >
+      <figure class="relative " style={{ aspectRatio: `${WIDTH} / ${HEIGHT}` }}>
         {/* Wishlist button */}
         <div
           class={`absolute top-2 z-10
-          ${
-            l?.elementsPositions?.favoriteIcon === "Top left"
+          ${l?.elementsPositions?.favoriteIcon === "Top left"
               ? "left-2"
               : "right-2"
-          }
-          ${
-            l?.onMouseOver?.showFavoriteIcon
+            }
+          ${l?.onMouseOver?.showFavoriteIcon
               ? "lg:hidden lg:group-hover:block"
               : "lg:hidden"
-          }
+            }
         `}
         >
           {
@@ -156,17 +145,15 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
             height={HEIGHT}
             class={`
               absolute rounded w-full
-              ${
-              (!l?.onMouseOver?.image ||
-                  l?.onMouseOver?.image == "Change image")
+              ${(!l?.onMouseOver?.image ||
+                l?.onMouseOver?.image == "Change image")
                 ? "duration-100 transition-opacity opacity-100 lg:group-hover:opacity-0"
                 : ""
-            }
-              ${
-              l?.onMouseOver?.image == "Zoom image"
+              }
+              ${l?.onMouseOver?.image == "Zoom image"
                 ? "duration-100 transition-scale scale-100 lg:group-hover:scale-125"
                 : ""
-            }
+              }
             `}
             sizes="(max-width: 640px) 50vw, 20vw"
             preload={preload}
@@ -175,26 +162,25 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
           />
           {(!l?.onMouseOver?.image ||
             l?.onMouseOver?.image == "Change image") && (
-            <Image
-              src={back?.url ?? front.url!}
-              alt={back?.alternateName ?? front.alternateName}
-              width={WIDTH}
-              height={HEIGHT}
-              class="absolute transition-opacity rounded w-full opacity-0 lg:group-hover:opacity-100"
-              sizes="(max-width: 640px) 50vw, 20vw"
-              loading="lazy"
-              decoding="async"
-            />
-          )}
+              <Image
+                src={back?.url ?? front.url!}
+                alt={back?.alternateName ?? front.alternateName}
+                width={WIDTH}
+                height={HEIGHT}
+                class="absolute transition-opacity rounded w-full opacity-0 lg:group-hover:opacity-100"
+                sizes="(max-width: 640px) 50vw, 20vw"
+                loading="lazy"
+                decoding="async"
+              />
+            )}
         </a>
         <figcaption
           class={`
           absolute bottom-1 left-0 w-full flex flex-col gap-3 p-2
-          ${
-            l?.onMouseOver?.showSkuSelector || l?.onMouseOver?.showCta
+          ${l?.onMouseOver?.showSkuSelector || l?.onMouseOver?.showCta
               ? "transition-opacity opacity-0 lg:group-hover:opacity-100"
               : "lg:hidden"
-          }
+            }
         `}
         >
           {/* SKU Selector */}
@@ -211,18 +197,17 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
         {/* SKU Selector */}
         {(!l?.elementsPositions?.skuSelector ||
           l?.elementsPositions?.skuSelector === "Top") && (
-          <>
-            {l?.hide.skuSelector ? "" : (
-              <ul
-                class={`flex items-center gap-2 w-full ${
-                  align === "center" ? "justify-center" : "justify-start"
-                } ${l?.onMouseOver?.showSkuSelector ? "lg:hidden" : ""}`}
-              >
-                {skuSelector}
-              </ul>
-            )}
-          </>
-        )}
+            <>
+              {l?.hide.skuSelector ? "" : (
+                <ul
+                  class={`flex items-center gap-2 w-full ${align === "center" ? "justify-center" : "justify-start"
+                    } ${l?.onMouseOver?.showSkuSelector ? "lg:hidden" : ""}`}
+                >
+                  {skuSelector}
+                </ul>
+              )}
+            </>
+          )}
 
         {l?.hide.productName && l?.hide.productDescription
           ? ""
@@ -253,16 +238,14 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
         {l?.hide.allPrices ? "" : (
           <div class="flex flex-col gap-2">
             <div
-              class={`flex flex-col gap-0 ${
-                l?.basics?.oldPriceSize === "Normal"
-                  ? "lg:flex-row lg:gap-2"
-                  : ""
-              } ${align === "center" ? "justify-center" : "justify-start"}`}
+              class={`flex flex-col gap-0 ${l?.basics?.oldPriceSize === "Normal"
+                ? "lg:flex-row lg:gap-2"
+                : ""
+                } ${align === "center" ? "justify-center" : "justify-start"}`}
             >
               <div
-                class={`line-through text-neutral text-xs ${
-                  l?.basics?.oldPriceSize === "Normal" ? "lg:text-xl" : ""
-                }`}
+                class={`line-through text-neutral text-xs ${l?.basics?.oldPriceSize === "Normal" ? "lg:text-xl" : ""
+                  }`}
               >
                 {formatPrice(listPrice, offers!.priceCurrency!)}
               </div>
@@ -285,9 +268,8 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
           <>
             {l?.hide.skuSelector ? "" : (
               <ul
-                class={`flex items-center gap-2 w-full ${
-                  align === "center" ? "justify-center" : "justify-start"
-                } ${l?.onMouseOver?.showSkuSelector ? "lg:hidden" : ""}`}
+                class={`flex items-center gap-2 w-full ${align === "center" ? "justify-center" : "justify-start"
+                  } ${l?.onMouseOver?.showSkuSelector ? "lg:hidden" : ""}`}
               >
                 {skuSelector}
               </ul>
@@ -298,9 +280,8 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
         {!l?.hide.cta
           ? (
             <div
-              class={`flex-auto flex items-end  ${
-                l?.onMouseOver?.showCta ? "lg:hidden" : ""
-              }`}
+              class={`flex-auto flex items-end  ${l?.onMouseOver?.showCta ? "lg:hidden" : ""
+                }`}
             >
               {cta}
             </div>
