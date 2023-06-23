@@ -37,7 +37,7 @@ export interface EditableProps {
   /**
    * @title Placeholder
    * @description Search bar default placeholder message
-   * @default What are you looking for?
+   * @default O que você procura?
    */
   placeholder?: string;
   /**
@@ -63,7 +63,7 @@ export type Props = EditableProps & {
 };
 
 function Searchbar({
-  placeholder = "What are you looking for?",
+  placeholder = "O que você procura?",
   action = "/s",
   name = "q",
   query,
