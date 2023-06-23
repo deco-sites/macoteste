@@ -140,13 +140,11 @@ function Banner(
       <Picture>
         <Source
           width={190}
-          height={undefined}
           media="(max-width: 767px)"
           src={srcMobile}
         />
         <Source
           width={630}
-          height={undefined}
           media="(min-width: 768px)"
           src={srcDesktop || srcMobile}
         />

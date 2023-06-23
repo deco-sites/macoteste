@@ -100,7 +100,7 @@ function CategoryList(props: Props) {
           >
             <a
               href={href}
-              class="flex flex-col gap-4 lg:w-[280px] w-40 lg:h-auto"
+              class="flex flex-col gap-4 lg:w-[280px] w-40  h-full justify-between"
             >
               {layout.categoryCard?.textPosition === "top" &&
                 (
