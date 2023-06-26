@@ -88,6 +88,7 @@
               "deco-sites/macoteste/sections/Category/SearchResult.tsx",
               "deco-sites/macoteste/sections/Content/Benefits.tsx",
               "deco-sites/macoteste/sections/Content/Faq.tsx",
+              "deco-sites/macoteste/sections/Content/InfoCard.tsx",
               "deco-sites/macoteste/sections/Content/Logos.tsx",
               "deco-sites/macoteste/sections/Content/Testimonials.tsx",
               "deco-sites/macoteste/sections/DesignSystem/DesignSystem.tsx",
@@ -7917,6 +7918,93 @@
       "required": [],
       "title": "deco-sites/macoteste/sections/Content/Faq.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy91aS9JY29uLnRzeA==@SocialIcons": {
+      "title": "SocialIcons"
+    },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbmZvQ2FyZC50c3g=@Links": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string",
+          "title": "Label"
+        },
+        "href": {
+          "type": "string",
+          "title": "Href"
+        },
+        "icon": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy91aS9JY29uLnRzeA==@SocialIcons",
+          "title": "Icon"
+        }
+      },
+      "required": [
+        "label",
+        "href",
+        "icon"
+      ],
+      "title": "Links"
+    },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbmZvQ2FyZC50c3g=@Links[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbmZvQ2FyZC50c3g=@Links"
+      },
+      "title": "Links[]"
+    },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbmZvQ2FyZC50c3g=@Props": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Title"
+        },
+        "caption": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Caption"
+        },
+        "html": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Description",
+          "format": "html"
+        },
+        "textAlign": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "Left"
+            },
+            {
+              "type": "string",
+              "const": "Center"
+            },
+            {
+              "type": "string",
+              "const": "Right"
+            },
+            {
+              "type": "string",
+              "const": "Justify"
+            }
+          ],
+          "type": "string",
+          "title": "Text Align"
+        },
+        "links": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbmZvQ2FyZC50c3g=@Links[]",
+          "title": "Links"
+        }
+      },
+      "required": [
+        "title"
+      ],
+      "title": "deco-sites/macoteste/sections/Content/InfoCard.tsx@Props"
+    },
     "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9Mb2dvcy50c3g=@Image": {
       "type": "object",
       "properties": {
@@ -9066,6 +9154,14 @@
         "suggestions": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@Suggestion|null",
           "title": "Enable Top Search terms"
+        },
+        "freeShipping": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "title": "Valor do frete grátis",
+          "description": "Deixar vazio caso não possua frete grátis"
         }
       },
       "required": [
@@ -13380,6 +13476,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbmZvQ2FyZC50c3g=": {
+      "title": "deco-sites/macoteste/sections/Content/InfoCard.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbmZvQ2FyZC50c3g=@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/macoteste/sections/Content/InfoCard.tsx"
+          ],
+          "default": "deco-sites/macoteste/sections/Content/InfoCard.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9Mb2dvcy50c3g=": {
       "title": "deco-sites/macoteste/sections/Content/Logos.tsx",
       "type": "object",
@@ -14972,6 +15089,9 @@
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9GYXEudHN4"
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbmZvQ2FyZC50c3g="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9Mb2dvcy50c3g="

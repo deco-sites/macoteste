@@ -12,9 +12,10 @@ const Searchbar = lazy(() => import("$store/components/search/Searchbar.tsx"));
 interface Props {
   menu: MenuProps;
   searchbar?: SearchbarProps;
+  freeShippingTarget: number;
 }
 
-function Modals({ menu, searchbar }: Props) {
+function Modals({ menu, searchbar,freeShippingTarget }: Props) {
   const { displayCart, displayMenu, displaySearchbar } = useUI();
 
   const fallback = (
@@ -64,7 +65,7 @@ function Modals({ menu, searchbar }: Props) {
         }}
       >
         <Suspense fallback={fallback}>
-          <Cart />
+          <Cart freeShippingTarget={freeShippingTarget}/>
         </Suspense>
       </Modal>
     </>

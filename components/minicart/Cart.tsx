@@ -8,7 +8,9 @@ import Coupon from "./Coupon.tsx";
 import SellerCode from "./SellerCode.tsx";
 import FreeShippingProgressBar from "./FreeShippingProgressBar.tsx";
 
-function Cart() {
+
+
+function Cart({freeShippingTarget}:{freeShippingTarget:number}) {
   const { displayCart } = useUI();
   const { cart, loading, mapItemsToAnalyticsItems } = useCart();
   const isCartEmpty = cart.value?.items.length === 0;
@@ -45,9 +47,9 @@ function Cart() {
       <div class="px-2 py-4">
         <FreeShippingProgressBar
           total={total / 100}
-          target={1000}
           locale={locale!}
           currency={currencyCode!}
+          target={freeShippingTarget}
         />
       </div>
       {/* Cart Items */}
