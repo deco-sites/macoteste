@@ -88,6 +88,7 @@
               "deco-sites/macoteste/sections/Category/SearchResult.tsx",
               "deco-sites/macoteste/sections/Content/Benefits.tsx",
               "deco-sites/macoteste/sections/Content/Faq.tsx",
+              "deco-sites/macoteste/sections/Content/HTMLText.tsx",
               "deco-sites/macoteste/sections/Content/ImageAndText.tsx",
               "deco-sites/macoteste/sections/Content/InfoCard.tsx",
               "deco-sites/macoteste/sections/Content/Logos.tsx",
@@ -7919,6 +7920,68 @@
       "required": [],
       "title": "deco-sites/macoteste/sections/Content/Faq.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9IVE1MVGV4dC50c3g=@Props": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Título",
+          "default": "Título"
+        },
+        "html": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Corpo do texto",
+          "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"",
+          "format": "html"
+        },
+        "alignDesktop": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "Esquerda"
+            },
+            {
+              "type": "string",
+              "const": "Direita"
+            },
+            {
+              "type": "string",
+              "const": "Centro"
+            }
+          ],
+          "type": "string",
+          "title": "Alinhamento do texto no desktop",
+          "default": "Centro"
+        },
+        "alignMobile": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "Esquerda"
+            },
+            {
+              "type": "string",
+              "const": "Direita"
+            },
+            {
+              "type": "string",
+              "const": "Centro"
+            }
+          ],
+          "type": "string",
+          "title": "Alinhamento do texto no mobile",
+          "default": "Centro"
+        }
+      },
+      "required": [],
+      "title": "deco-sites/macoteste/sections/Content/HTMLText.tsx@Props"
+    },
     "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbWFnZUFuZFRleHQudHN4@Imagem": {
       "type": "object",
       "properties": {
@@ -13579,6 +13642,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9IVE1MVGV4dC50c3g=": {
+      "title": "deco-sites/macoteste/sections/Content/HTMLText.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9IVE1MVGV4dC50c3g=@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/macoteste/sections/Content/HTMLText.tsx"
+          ],
+          "default": "deco-sites/macoteste/sections/Content/HTMLText.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbWFnZUFuZFRleHQudHN4": {
       "title": "deco-sites/macoteste/sections/Content/ImageAndText.tsx",
       "type": "object",
@@ -15213,6 +15297,9 @@
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9GYXEudHN4"
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9IVE1MVGV4dC50c3g="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbWFnZUFuZFRleHQudHN4"
