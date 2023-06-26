@@ -330,7 +330,7 @@ function Details({
                     style={{ aspectRatio: ASPECT_RATIO }}
                     class="group-disabled:border-base-300 border rounded "
                     width={63}
-                    height={87.5}
+                    height={63}
                     src={img.url!}
                     alt={img.alternateName}
                   />

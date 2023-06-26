@@ -51,6 +51,7 @@ function QuantitySelector({ onChange, quantity, disabled, loading }: Props) {
         value={quantity}
         disabled={disabled}
         onBlur={(e) => onChange?.(e.currentTarget.valueAsNumber)}
+        aria-label="Quantidade"
       />
       <Button
         class="btn-square btn-outline border-none join-item"
