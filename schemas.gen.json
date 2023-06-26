@@ -88,6 +88,7 @@
               "deco-sites/macoteste/sections/Category/SearchResult.tsx",
               "deco-sites/macoteste/sections/Content/Benefits.tsx",
               "deco-sites/macoteste/sections/Content/Faq.tsx",
+              "deco-sites/macoteste/sections/Content/ImageAndText.tsx",
               "deco-sites/macoteste/sections/Content/InfoCard.tsx",
               "deco-sites/macoteste/sections/Content/Logos.tsx",
               "deco-sites/macoteste/sections/Content/Testimonials.tsx",
@@ -7918,6 +7919,108 @@
       "required": [],
       "title": "deco-sites/macoteste/sections/Content/Faq.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbWFnZUFuZFRleHQudHN4@Imagem": {
+      "type": "object",
+      "properties": {
+        "desktop": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "description": "desktop otimized image",
+          "title": "Desktop"
+        },
+        "mobile": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "description": "mobile otimized image",
+          "title": "Mobile"
+        },
+        "sizeMobile": {
+          "type": "object",
+          "properties": {
+            "height": {
+              "type": "number",
+              "title": "Height"
+            },
+            "width": {
+              "type": "number",
+              "title": "Width"
+            }
+          },
+          "required": [
+            "height",
+            "width"
+          ],
+          "title": "Tamanho da imagem mobile"
+        },
+        "sizeDesktop": {
+          "type": "object",
+          "properties": {
+            "height": {
+              "type": "number",
+              "title": "Height"
+            },
+            "width": {
+              "type": "number",
+              "title": "Width"
+            }
+          },
+          "required": [
+            "height",
+            "width"
+          ],
+          "title": "Tamanho da imagem desktop"
+        },
+        "alt": {
+          "type": "string",
+          "description": "Image's alt text",
+          "title": "Alt"
+        }
+      },
+      "required": [
+        "alt"
+      ],
+      "title": "Imagem"
+    },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbWFnZUFuZFRleHQudHN4@Props": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Título"
+        },
+        "html": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Corpo do texto",
+          "format": "html"
+        },
+        "image": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbWFnZUFuZFRleHQudHN4@Imagem",
+          "title": "imagem"
+        },
+        "imageAlign": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "Esquerda"
+            },
+            {
+              "type": "string",
+              "const": "Direita"
+            }
+          ],
+          "type": "string",
+          "title": "Alinhamento da imagem",
+          "default": "Esquerda"
+        }
+      },
+      "required": [
+        "title",
+        "image",
+        "imageAlign"
+      ],
+      "title": "deco-sites/macoteste/sections/Content/ImageAndText.tsx@Props"
+    },
     "ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy91aS9JY29uLnRzeA==@SocialIcons": {
       "title": "SocialIcons"
     },
@@ -13476,6 +13579,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbWFnZUFuZFRleHQudHN4": {
+      "title": "deco-sites/macoteste/sections/Content/ImageAndText.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbWFnZUFuZFRleHQudHN4@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/macoteste/sections/Content/ImageAndText.tsx"
+          ],
+          "default": "deco-sites/macoteste/sections/Content/ImageAndText.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbmZvQ2FyZC50c3g=": {
       "title": "deco-sites/macoteste/sections/Content/InfoCard.tsx",
       "type": "object",
@@ -15089,6 +15213,9 @@
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9GYXEudHN4"
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbWFnZUFuZFRleHQudHN4"
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9JbmZvQ2FyZC50c3g="
