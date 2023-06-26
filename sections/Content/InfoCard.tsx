@@ -1,4 +1,4 @@
-import type { SocialIcons } from "$store/components/ui/Icon.tsx";
+import type { AvailableIcons } from "$store/components/ui/Icon.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 
 export type TextAlign = "Left" | "Center" | "Right" | "Justify";
@@ -13,7 +13,7 @@ export const TEXT_ALIGMENT: Record<TextAlign, string> = {
 export interface Links {
   label: string;
   href: string;
-  icon: SocialIcons;
+  icon: AvailableIcons;
 }
 
 export interface Props {

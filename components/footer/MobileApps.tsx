@@ -1,14 +1,14 @@
 import Icon from "$store/components/ui/Icon.tsx";
 
 export default function MobileApps(
-  { content }: { content: { apple?: string; android?: string } },
+  { content }: { content: { apple?: string; android?: string,androidLabel?:string,appleLabel?:string } },
 ) {
   return (
     <>
       {(content?.apple || content?.android) && (
         <div class="flex gap-2">
           {content?.apple && (
-            <a href={content?.apple} target="_blank">
+            <a href={content?.apple} target="_blank" aria-label={content.appleLabel}>
               <svg
                 width="135"
                 height="40"
@@ -116,7 +116,7 @@ export default function MobileApps(
             </a>
           )}
           {content?.android && (
-            <a href={content?.android} target="_blank">
+            <a href={content?.android} target="_blank" aria-label={content.android}>
               <svg
                 width="135"
                 height="40"

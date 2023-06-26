@@ -42,6 +42,10 @@ export interface MobileApps {
   apple?: string;
   /** @description Link to the app */
   android?: string;
+  /** @description Android link Aria-label */
+    androidLabel?: string;
+    /** @description Apple link Aria-label */
+    appleLabel?: string;
 }
 
 export interface RegionOptions {
@@ -115,7 +119,7 @@ function Footer({
   sections = [],
   social = [],
   payments = [],
-  mobileApps = { apple: "", android: "" },
+  mobileApps = { apple: "", android: "", androidLabel: "", appleLabel: ""},
   regionOptions = [],
   extraLinks = [],
   backToTheTop,
