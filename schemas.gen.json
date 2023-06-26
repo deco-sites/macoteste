@@ -7733,6 +7733,13 @@
               "description": {
                 "type": "string",
                 "title": "Description"
+              },
+              "href": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "Href"
               }
             },
             "required": [
@@ -8046,7 +8053,10 @@
       "type": "object",
       "properties": {
         "title": {
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "title": "Título"
         },
         "html": {
@@ -8078,7 +8088,6 @@
         }
       },
       "required": [
-        "title",
         "image",
         "imageAlign"
       ],
@@ -9099,6 +9108,13 @@
                 "null"
               ],
               "title": "Description"
+            },
+            "alt": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "Alt"
             }
           },
           "required": [
@@ -9460,6 +9476,190 @@
       },
       "title": "NavItem[]"
     },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9oZWFkZXIvSGVhZGVyLnRzeA==@Icon": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string",
+          "title": "Link name"
+        },
+        "href": {
+          "type": "string",
+          "title": "Link URL"
+        },
+        "icon": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "ArrowsPointingOut"
+            },
+            {
+              "type": "string",
+              "const": "Bars3"
+            },
+            {
+              "type": "string",
+              "const": "ChevronLeft"
+            },
+            {
+              "type": "string",
+              "const": "ChevronRight"
+            },
+            {
+              "type": "string",
+              "const": "ChevronUp"
+            },
+            {
+              "type": "string",
+              "const": "ChevronDown"
+            },
+            {
+              "type": "string",
+              "const": "CreditCard"
+            },
+            {
+              "type": "string",
+              "const": "Deco"
+            },
+            {
+              "type": "string",
+              "const": "Diners"
+            },
+            {
+              "type": "string",
+              "const": "Discord"
+            },
+            {
+              "type": "string",
+              "const": "Discount"
+            },
+            {
+              "type": "string",
+              "const": "Elo"
+            },
+            {
+              "type": "string",
+              "const": "Facebook"
+            },
+            {
+              "type": "string",
+              "const": "FilterList"
+            },
+            {
+              "type": "string",
+              "const": "Heart"
+            },
+            {
+              "type": "string",
+              "const": "Instagram"
+            },
+            {
+              "type": "string",
+              "const": "Logo"
+            },
+            {
+              "type": "string",
+              "const": "Minus"
+            },
+            {
+              "type": "string",
+              "const": "MapPin"
+            },
+            {
+              "type": "string",
+              "const": "MagnifyingGlass"
+            },
+            {
+              "type": "string",
+              "const": "Mastercard"
+            },
+            {
+              "type": "string",
+              "const": "Message"
+            },
+            {
+              "type": "string",
+              "const": "Phone"
+            },
+            {
+              "type": "string",
+              "const": "Pix"
+            },
+            {
+              "type": "string",
+              "const": "Plus"
+            },
+            {
+              "type": "string",
+              "const": "QuestionMarkCircle"
+            },
+            {
+              "type": "string",
+              "const": "Return"
+            },
+            {
+              "type": "string",
+              "const": "Ruler"
+            },
+            {
+              "type": "string",
+              "const": "ShoppingCart"
+            },
+            {
+              "type": "string",
+              "const": "Star"
+            },
+            {
+              "type": "string",
+              "const": "Tiktok"
+            },
+            {
+              "type": "string",
+              "const": "Trash"
+            },
+            {
+              "type": "string",
+              "const": "Truck"
+            },
+            {
+              "type": "string",
+              "const": "User"
+            },
+            {
+              "type": "string",
+              "const": "Visa"
+            },
+            {
+              "type": "string",
+              "const": "WhatsApp"
+            },
+            {
+              "type": "string",
+              "const": "XMark"
+            },
+            {
+              "type": "string",
+              "const": "Zoom"
+            }
+          ],
+          "type": "string",
+          "title": "Icon",
+          "description": "Icon to be displayed on the link"
+        }
+      },
+      "required": [
+        "label",
+        "href"
+      ],
+      "title": "Icon"
+    },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9oZWFkZXIvSGVhZGVyLnRzeA==@Icon[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9oZWFkZXIvSGVhZGVyLnRzeA==@Icon"
+      },
+      "title": "Icon[]"
+    },
     "ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9oZWFkZXIvSGVhZGVyLnRzeA==@Props": {
       "type": "object",
       "properties": {
@@ -9478,6 +9678,11 @@
           "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9oZWFkZXIvSGVhZGVyLnRzeA==@NavItem[]",
           "title": "Navigation items",
           "description": "Navigation items used both on mobile and desktop menus"
+        },
+        "icons": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9oZWFkZXIvSGVhZGVyLnRzeA==@Icon[]",
+          "title": "Links menu",
+          "description": "Links menu displayed on mobile menu"
         },
         "products": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@Product[]|null",

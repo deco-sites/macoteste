@@ -64,6 +64,7 @@ export interface Props {
   logo?: {
     image: LiveImage;
     description?: string;
+    alt?: string;
   };
   newsletter?: {
     title?: string;

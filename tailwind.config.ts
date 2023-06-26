@@ -1,6 +1,7 @@
 import daisyui from "daisyui";
 import type { Config } from "tailwindcss";
 
+
 export default {
   plugins: [daisyui],
   daisyui: { themes: [], logs: false },
@@ -16,6 +17,16 @@ export default {
         footer: "#1e1e1e",
         btnHover:"#1f2b37"
       },
+      customClasses:{
+        "line-clamp-2":{
+            "text-overflow":"ellipsis",
+            overflow:"hidden",
+            display: "-webkit-box",
+            "-webkit-line-clamp": "2",
+            "-webkit-box-orient": "vertical",
+            "white-space": "normal",
+        }
+      }
     },
   },
 } satisfies Config;

@@ -216,7 +216,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
               {l?.hide.productName
                 ? ""
                 : (
-                  <h2 class="truncate text-base lg:text-lg text-base-content">
+                  <h2 class="line-clamp-2 text-base lg:text-lg text-base-content">
                     {name}
                   </h2>
                 )}

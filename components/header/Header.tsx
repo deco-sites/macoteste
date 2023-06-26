@@ -1,5 +1,6 @@
 import Modals from "$store/islands/HeaderModals.tsx";
 import { useFreeShipping } from "$store/sdk/useFreeShipping.ts";
+import type { AvailableIcons } from "$store/components/ui/Icon.tsx";
 import type { Image } from "deco-sites/std/components/types.ts";
 import type { EditableProps as SearchbarProps } from "$store/components/search/Searchbar.tsx";
 import type { LoaderReturnType } from "$live/types.ts";
@@ -26,6 +27,22 @@ export interface NavItem {
     };
 }
 
+export interface Icon {
+    /**
+     * @title Link name
+     */
+    label: string;
+    /**
+     * @title Link URL
+     */
+    href: string;
+    /**
+     * @title Icon
+     * @description Icon to be displayed on the link
+     * */
+    icon?: AvailableIcons;
+}
+
 export interface Props {
     alerts: string[];
     /** @title Search Bar */
@@ -35,6 +52,12 @@ export interface Props {
      * @description Navigation items used both on mobile and desktop menus
      */
     navItems?: NavItem[];
+
+    /**
+     * @title Links menu
+     * @description Links menu displayed on mobile menu
+     */
+    icons?: Icon[];
 
     /**
      * @title Product suggestions
@@ -53,20 +76,22 @@ export interface Props {
     freeShipping?: number;
 }
 
-function Header({ alerts, searchbar: _searchbar, products, navItems = [], suggestions, freeShipping}: Props) {
+function Header({ alerts, searchbar: _searchbar, products, navItems = [], icons=[],suggestions, freeShipping}: Props) {
     const freeShippingSignal = useFreeShipping();
     freeShippingSignal.value = freeShipping ? freeShipping : 0;
-    
+
     const searchbar = { ..._searchbar, products, suggestions };
     return (
         <>
             <header style={{ height: headerHeight }}>
                 <div class="bg-base-100 fixed w-full z-50">
-                    <Alert alerts={alerts} />
-                    <Navbar items={navItems} searchbar={searchbar} />
+                        <Alert alerts={alerts} />
+                    <div class="container px-4 md:px-0 mx-auto">
+                        <Navbar items={navItems} searchbar={searchbar} />
+                    </div>
                 </div>
 
-                <Modals menu={{ items: navItems }} searchbar={searchbar} freeShippingTarget={freeShippingSignal.value} />
+                <Modals menu={{ items: navItems,icons }} searchbar={searchbar} freeShippingTarget={freeShippingSignal.value} />
             </header>
         </>
     );

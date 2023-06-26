@@ -12,7 +12,7 @@ export interface Props {
     /**
      * @title Título
      */
-  title: string;
+  title?: string;
   /**
    * @title Corpo do texto
    * @format html
@@ -68,7 +68,7 @@ export default function ImageAndtext( { html, title, imageAlign,image }: Props, 
     return (
       <section class={`flex md:flex-row flex-col py-4 px-4 md:px-0 mx-auto gap-8 container w-full`}>
         <div class={`flex-1 self-center text-center ${IMAGE_ALIGNMENT[imageAlign ?? "Direita"]}`}>
-            <h3 class="text-secondary font-normal text-2xl mb-5">{title}</h3>
+            {title && <h3 class="text-secondary font-normal text-2xl mb-5">{title}</h3>}
             {html ? ( <div dangerouslySetInnerHTML={{ __html: html }}
                 class="text-neutral font-normal text-sm max-w-5xl m-auto pb-12" />
             ) : null}
