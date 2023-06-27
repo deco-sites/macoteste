@@ -95,6 +95,7 @@
               "deco-sites/macoteste/sections/Content/Testimonials.tsx",
               "deco-sites/macoteste/sections/DesignSystem/DesignSystem.tsx",
               "deco-sites/macoteste/sections/Footer/Footer.tsx",
+              "deco-sites/macoteste/sections/Header/Alert.tsx",
               "deco-sites/macoteste/sections/Header/Header.tsx",
               "deco-sites/macoteste/sections/Images/BannerGrid.tsx",
               "deco-sites/macoteste/sections/Images/Carousel.tsx",
@@ -6702,8 +6703,7 @@
         "pathTemplate",
         "handler"
       ],
-      "title": "Route",
-      "titleBy": "pathTemplate"
+      "title": "Route"
     },
     "ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Route[]": {
       "anyOf": [
@@ -9349,6 +9349,30 @@
       },
       "required": [],
       "title": "deco-sites/macoteste/components/footer/Footer.tsx@Props"
+    },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9oZWFkZXIvQWxlcnQudHN4@Props": {
+      "type": "object",
+      "properties": {
+        "alerts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Alerts"
+        },
+        "interval": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "title": "Autoplay interval",
+          "description": "time (in seconds) to start the carousel autoplay"
+        }
+      },
+      "required": [
+        "alerts"
+      ],
+      "title": "deco-sites/macoteste/components/header/Alert.tsx@Props"
     },
     "ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9zZWFyY2gvU2VhcmNoYmFyLnRzeA==@EditableProps": {
       "type": "object",
@@ -14161,6 +14185,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvSGVhZGVyL0FsZXJ0LnRzeA==": {
+      "title": "deco-sites/macoteste/sections/Header/Alert.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9oZWFkZXIvQWxlcnQudHN4@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/macoteste/sections/Header/Alert.tsx"
+          ],
+          "default": "deco-sites/macoteste/sections/Header/Alert.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvSGVhZGVyL0hlYWRlci50c3g=": {
       "title": "deco-sites/macoteste/sections/Header/Header.tsx",
       "type": "object",
@@ -15690,6 +15735,9 @@
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvRm9vdGVyL0Zvb3Rlci50c3g="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvSGVhZGVyL0FsZXJ0LnRzeA=="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvSGVhZGVyL0hlYWRlci50c3g="
