@@ -41,11 +41,12 @@ import * as $$$$$$$$20 from "./sections/Miscellaneous/CampaignTimer.tsx";
 import * as $$$$$$$$21 from "./sections/Miscellaneous/CookieConsent.tsx";
 import * as $$$$$$$$22 from "./sections/Social/WhatsApp.tsx";
 import * as $$$$$$$$23 from "./sections/Social/InstagramPosts.tsx";
-import * as $$$$$$$$24 from "./sections/Links/LinkTree.tsx";
-import * as $$$$$$$$25 from "./sections/Links/Shortcuts.tsx";
-import * as $$$$$$$$26 from "./sections/Newsletter/Newsletter.tsx";
-import * as $$$$$$$$27 from "./sections/Header/Alert.tsx";
-import * as $$$$$$$$28 from "./sections/Header/Header.tsx";
+import * as $$$$$$$$24 from "./sections/productShelfOmron/ProductShelfOmron.tsx";
+import * as $$$$$$$$25 from "./sections/Links/LinkTree.tsx";
+import * as $$$$$$$$26 from "./sections/Links/Shortcuts.tsx";
+import * as $$$$$$$$27 from "./sections/Newsletter/Newsletter.tsx";
+import * as $$$$$$$$28 from "./sections/Header/Alert.tsx";
+import * as $$$$$$$$29 from "./sections/Header/Header.tsx";
 import * as $live_middleware from "$live/routes/_middleware.ts";
 import * as $live_workbench from "$live/routes/live/workbench.ts";
 import * as $live_invoke from "$live/routes/live/invoke/index.ts";
@@ -213,21 +214,23 @@ const manifest = {
     "deco-sites/macoteste/sections/Content/Testimonials.tsx": $$$$$$$$11,
     "deco-sites/macoteste/sections/DesignSystem/DesignSystem.tsx": $$$$$$$$1,
     "deco-sites/macoteste/sections/Footer/Footer.tsx": $$$$$$$$0,
-    "deco-sites/macoteste/sections/Header/Alert.tsx": $$$$$$$$27,
-    "deco-sites/macoteste/sections/Header/Header.tsx": $$$$$$$$28,
+    "deco-sites/macoteste/sections/Header/Alert.tsx": $$$$$$$$28,
+    "deco-sites/macoteste/sections/Header/Header.tsx": $$$$$$$$29,
     "deco-sites/macoteste/sections/Images/BannerGrid.tsx": $$$$$$$$6,
     "deco-sites/macoteste/sections/Images/Carousel.tsx": $$$$$$$$8,
     "deco-sites/macoteste/sections/Images/ImageGallery.tsx": $$$$$$$$7,
     "deco-sites/macoteste/sections/Images/ShoppableBanner.tsx": $$$$$$$$5,
-    "deco-sites/macoteste/sections/Links/LinkTree.tsx": $$$$$$$$24,
-    "deco-sites/macoteste/sections/Links/Shortcuts.tsx": $$$$$$$$25,
+    "deco-sites/macoteste/sections/Links/LinkTree.tsx": $$$$$$$$25,
+    "deco-sites/macoteste/sections/Links/Shortcuts.tsx": $$$$$$$$26,
     "deco-sites/macoteste/sections/Miscellaneous/CampaignTimer.tsx": $$$$$$$$20,
     "deco-sites/macoteste/sections/Miscellaneous/CookieConsent.tsx": $$$$$$$$21,
-    "deco-sites/macoteste/sections/Newsletter/Newsletter.tsx": $$$$$$$$26,
+    "deco-sites/macoteste/sections/Newsletter/Newsletter.tsx": $$$$$$$$27,
     "deco-sites/macoteste/sections/Product/ProductDetails.tsx": $$$$$$$$19,
     "deco-sites/macoteste/sections/Product/ProductShelf.tsx": $$$$$$$$18,
     "deco-sites/macoteste/sections/Product/SearchResult.tsx": $$$$$$$$17,
     "deco-sites/macoteste/sections/Product/Wishlist.tsx": $$$$$$$$16,
+    "deco-sites/macoteste/sections/productShelfOmron/ProductShelfOmron.tsx":
+      $$$$$$$$24,
     "deco-sites/macoteste/sections/Social/InstagramPosts.tsx": $$$$$$$$23,
     "deco-sites/macoteste/sections/Social/WhatsApp.tsx": $$$$$$$$22,
     "deco-sites/std/sections/Analytics.tsx": i2$$$$$5,
