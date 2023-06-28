@@ -10711,6 +10711,41 @@
           ],
           "title": "Autoplay interval",
           "description": "time (in seconds) to start the carousel autoplay"
+        },
+        "sizes": {
+          "type": "object",
+          "properties": {
+            "mobileHeight": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "title": "Mobile Height"
+            },
+            "mobileWidth": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "title": "Mobile Width"
+            },
+            "desktopHeight": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "title": "Desktop Height"
+            },
+            "desktopWidth": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "title": "Desktop Width"
+            }
+          },
+          "required": [],
+          "title": "Tamanho das imagens"
         }
       },
       "required": [],

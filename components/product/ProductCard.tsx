@@ -212,7 +212,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
         {l?.hide.productName && l?.hide.productDescription
           ? ""
           : (
-            <div class="flex flex-col gap-0">
+            <div class="flex flex-col gap-0 h-14">
               {l?.hide.productName
                 ? ""
                 : (
