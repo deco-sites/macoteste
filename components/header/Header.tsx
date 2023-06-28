@@ -95,7 +95,7 @@ function Header(
       {/* <div class="fixed top-[38px]"> */}
       <header style={{ height: headerHeight }}>
         <div class="bg-base-100 fixed w-full z-50">
-          <div class="container px-4 md:px-0 mx-auto">
+          <div class="container  md:px-0 mx-auto">
             <Navbar items={navItems} searchbar={searchbar} />
           </div>
         </div>
