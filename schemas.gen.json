@@ -7865,6 +7865,200 @@
           "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9wcm9kdWN0L1Byb2R1Y3RHYWxsZXJ5LnRzeA==@Columns",
           "description": "Number of products per line on grid",
           "title": "Columns"
+        },
+        "cardLayout": {
+          "type": "object",
+          "properties": {
+            "basics": {
+              "type": "object",
+              "properties": {
+                "contentAlignment": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "Left",
+                      "default": "Left"
+                    },
+                    {
+                      "type": "string",
+                      "const": "Center",
+                      "default": "Center"
+                    }
+                  ],
+                  "type": "string",
+                  "title": "Content Alignment"
+                },
+                "oldPriceSize": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "Small",
+                      "default": "Small"
+                    },
+                    {
+                      "type": "string",
+                      "const": "Normal",
+                      "default": "Normal"
+                    }
+                  ],
+                  "type": "string",
+                  "title": "Old Price Size"
+                },
+                "ctaText": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "title": "Cta Text"
+                }
+              },
+              "required": [],
+              "title": "Basics"
+            },
+            "elementsPositions": {
+              "type": "object",
+              "properties": {
+                "skuSelector": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "Top",
+                      "default": "Top"
+                    },
+                    {
+                      "type": "string",
+                      "const": "Bottom",
+                      "default": "Bottom"
+                    }
+                  ],
+                  "type": "string",
+                  "title": "Sku Selector"
+                },
+                "favoriteIcon": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "Top right",
+                      "default": "Top right"
+                    },
+                    {
+                      "type": "string",
+                      "const": "Top left",
+                      "default": "Top left"
+                    }
+                  ],
+                  "type": "string",
+                  "title": "Favorite Icon"
+                }
+              },
+              "required": [],
+              "title": "Elements Positions"
+            },
+            "hide": {
+              "type": "object",
+              "properties": {
+                "productName": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ],
+                  "title": "Product Name"
+                },
+                "productDescription": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ],
+                  "title": "Product Description"
+                },
+                "allPrices": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ],
+                  "title": "All Prices"
+                },
+                "installments": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ],
+                  "title": "Installments"
+                },
+                "skuSelector": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ],
+                  "title": "Sku Selector"
+                },
+                "cta": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ],
+                  "title": "Cta"
+                }
+              },
+              "required": [],
+              "title": "Hide"
+            },
+            "onMouseOver": {
+              "type": "object",
+              "properties": {
+                "image": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "Change image",
+                      "default": "Change image"
+                    },
+                    {
+                      "type": "string",
+                      "const": "Zoom image",
+                      "default": "Zoom image"
+                    }
+                  ],
+                  "type": "string",
+                  "title": "Image"
+                },
+                "showFavoriteIcon": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ],
+                  "title": "Show Favorite Icon"
+                },
+                "showSkuSelector": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ],
+                  "title": "Show Sku Selector"
+                },
+                "showCardShadow": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ],
+                  "title": "Show Card Shadow"
+                },
+                "showCta": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ],
+                  "title": "Show Cta"
+                }
+              },
+              "required": [],
+              "title": "On Mouse Over"
+            }
+          },
+          "required": [
+            "hide"
+          ],
+          "title": "Card Layout"
         }
       },
       "required": [

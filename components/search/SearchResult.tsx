@@ -18,6 +18,33 @@ export interface Props {
    * @description Number of products per line on grid
    */
   columns: Columns;
+
+  cardLayout?: {
+    basics?: {
+      contentAlignment?: "Left" | "Center";
+      oldPriceSize?: "Small" | "Normal";
+      ctaText?: string;
+    };
+    elementsPositions?: {
+      skuSelector?: "Top" | "Bottom";
+      favoriteIcon?: "Top right" | "Top left";
+    };
+    hide: {
+      productName?: boolean;
+      productDescription?: boolean;
+      allPrices?: boolean;
+      installments?: boolean;
+      skuSelector?: boolean;
+      cta?: boolean;
+    };
+    onMouseOver?: {
+      image?: "Change image" | "Zoom image";
+      showFavoriteIcon?: boolean;
+      showSkuSelector?: boolean;
+      showCardShadow?: boolean;
+      showCta?: boolean;
+    };
+  };
 }
 
 function NotFound() {
@@ -31,6 +58,7 @@ function NotFound() {
 function Result({
   page,
   variant,
+  cardLayout,
 }: Omit<Props, "page"> & { page: ProductListingPage }) {
   const { products, filters, breadcrumb, pageInfo, sortOptions } = page;
 
@@ -51,7 +79,7 @@ function Result({
             </aside>
           )}
           <div class="flex-grow">
-            <ProductGallery products={products} />
+            <ProductGallery products={products} cardLayout={cardLayout} />
           </div>
         </div>
         {pageInfo.previousPage || pageInfo.nextPage
