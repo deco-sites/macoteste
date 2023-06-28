@@ -22,7 +22,18 @@ export type Props = Pick<ProductListingPage, "sortOptions">;
 
 function Sort({ sortOptions }: Props) {
   const sort = useSort();
+  console.log("sortOptions", sortOptions);
 
+  const dictionary: any = {
+    "relevance:desc": "Relevância",
+    "price:desc": "Maior preço",
+    "price:asc": "Menor preço",
+    "orders:desc": "Mais vendidos",
+    "name:desc": "De Z a A",
+    "name:asc": "De A a Z",
+    "release:desc": "Mais recentes",
+    "discount:desc": "Descontos",
+  };
   return (
     <select
       id="sort"
@@ -32,7 +43,7 @@ function Sort({ sortOptions }: Props) {
     >
       {sortOptions.map(({ value, label }) => (
         <option key={value} value={value} selected={value === sort}>
-          <span class="text-sm">{label}</span>
+          <span class="text-sm">{dictionary[label]}</span>
         </option>
       ))}
     </select>
