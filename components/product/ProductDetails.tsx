@@ -353,13 +353,17 @@ function Details({
         </div>
         <SliderJS rootId={id}></SliderJS>
 
-        <div class="mt-4 sm:mt-6 px-4 sm:pr-0">
+        <div class="mt-4 mb-6 sm:mb-4 sm:mt-8 px-4 sm:pr-0">
           <span class="text-sm">
             {page.product.description && (
               <details open>
-                <summary class="cursor-pointer text-xl">Descrição</summary>
+                <summary class="cursor-pointer text-xl flex flex-row ">
+                    <span class="align-start mr-auto">Descrição</span>
+                    <Icon class="icon-open" id="ChevronDown" size={20} strokeWidth={3} />
+                    <Icon class="icon-closed"id="ChevronUp" size={20} strokeWidth={3} />
+                </summary>
                 <div
-                  class="ml-2 mt-2"
+                  class="ml-2 mt-2 overflow-hidden"
                   dangerouslySetInnerHTML={{ __html: page.product.description }}
                 >
                 </div>

@@ -108,7 +108,7 @@ function ShippingSimulation({ items, shippingText }: Props) {
       </div>
       <div>
         <form
-          class="join"
+          class="join w-full sm:w-auto"
           onSubmit={(e) => {
             e.preventDefault();
             handleSimulation();
@@ -117,7 +117,7 @@ function ShippingSimulation({ items, shippingText }: Props) {
           <input
             as="input"
             type="text"
-            class="input input-bordered join-item"
+            class="input input-bordered join-item w-full sm:w-auto"
             placeholder="Seu cep aqui"
             value={postalCode.value}
             maxLength={8}

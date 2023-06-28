@@ -20,6 +20,13 @@
     -moz-appearance: textfield;
     appearance: textfield;
   }
+  details[open] summary .icon-closed {
+    display: none;
+  }
+  
+  details:not([open]) summary .icon-open {
+    display: none;
+  }
 }
 
 @layer components {
