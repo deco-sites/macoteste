@@ -8,7 +8,7 @@ import Slider from "$store/components/ui/Slider.tsx";
 import SliderJS from "$store/components/ui/SliderJS.tsx";
 import OutOfStock from "$store/islands/OutOfStock.tsx";
 import { useOffer } from "$store/sdk/useOffer.ts";
-import { formatPrice } from "$store/sdk/format.ts";
+import { formatInstallments, formatPrice } from "$store/sdk/format.ts";
 import { SendEventOnLoad } from "$store/sdk/analytics.tsx";
 import { mapProductToAnalyticsItem } from "deco-sites/std/commerce/utils/productToAnalyticsItem.ts";
 import type { ProductDetailsPage } from "deco-sites/std/commerce/types.ts";
@@ -60,17 +60,13 @@ function ProductInfo(
     shippingText: string;
   },
 ) {
-  const { breadcrumbList, product, } = page;
-  const { productID, offers, name, gtin, } = product;
-  const { price, listPrice, seller, installments, availability } = useOffer( offers,"MCQ" );
+  const { breadcrumbList, product } = page;
+  const { productID, offers, name, gtin } = product;
+  const { price, listPrice, seller, installments, availability } = useOffer(
+    offers,
+    "MCQ",
+  );
 
-  const formatInstallments = (str: string | null) => {
-    if (!str) return "";
-    const value = str.split("R$ ")[1].split(" ")[0];
-    const newValue = `${formatPrice(parseFloat(value))}`;
-    str = str.replace(`R$ ${value}`, newValue);
-    return str;
-  };
   return (
     <>
       {/* Code and name */}

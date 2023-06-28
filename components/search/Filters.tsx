@@ -39,12 +39,14 @@ function FilterValues({ key, values }: FilterToggle) {
 
         if (key === "cor" || key === "tamanho") {
           return (
-            <a href={url}>
-              <Avatar
-                content={value}
-                variant={selected ? "active" : "default"}
-              />
-            </a>
+            <li>
+              <a href={url}>
+                <Avatar
+                  content={value}
+                  variant={selected ? "active" : "default"}
+                />
+              </a>
+            </li>
           );
         }
 
@@ -52,14 +54,20 @@ function FilterValues({ key, values }: FilterToggle) {
           const range = parseRange(item.value);
 
           return range && (
-            <ValueItem
-              {...item}
-              label={`${formatPrice(range.from)} - ${formatPrice(range.to)}`}
-            />
+            <li>
+              <ValueItem
+                {...item}
+                label={`${formatPrice(range.from)} - ${formatPrice(range.to)}`}
+              />
+            </li>
           );
         }
 
-        return <ValueItem {...item} />;
+        return (
+          <li>
+            <ValueItem {...item} />
+          </li>
+        );
       })}
     </ul>
   );
