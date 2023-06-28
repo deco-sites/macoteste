@@ -16,6 +16,8 @@ import type { LoaderReturnType } from "$live/types.ts";
 
 import { useSignal } from "@preact/signals";
 import ProductSelector from "./ProductVariantSelector.tsx";
+import ProductSpecification from "./ProductSpecification.tsx";
+
 import ProductImageZoom from "$store/islands/ProductImageZoom.tsx";
 
 import QuantityAddToCartButton from "../../islands/QuantityAddToCartButton.tsx";
@@ -31,7 +33,17 @@ export interface Props {
   variant?: Variant;
   buyButtomText?: string;
   shippingText?: string;
+  /**
+   * @title Especificações do produto
+   */
+  specificationsToShow?: Specifications[]
 }
+
+
+export interface Specifications {
+    specificationName: string,
+    specificationTitle?: string,
+};
 
 const WIDTH = 650;
 const HEIGHT = 650;
@@ -242,11 +254,13 @@ function Details({
   variant,
   buyButtomInnerText,
   shippingText,
+  specificationsToShow
 }: {
   page: ProductDetailsPage;
   variant: Variant;
   buyButtomInnerText: string;
   shippingText: string;
+  specificationsToShow:Specifications[] | undefined;
 }) {
   const { breadcrumbList,product } = page;
   const id = `product-image-gallery:${useId()}`;
@@ -272,10 +286,7 @@ function Details({
           <div class="relative sm:col-start-2 sm:col-span-1 sm:row-start-1">
             <Slider class="carousel carousel-center gap-6 w-screen sm:w-[40vw]">
               {images.map((img, index) => (
-                <Slider.Item
-                  index={index}
-                  class="carousel-item w-full"
-                >
+                <Slider.Item index={index} class="carousel-item w-full " >
                   <Image
                     class="w-full max-w-[650px]"
                     sizes="(max-width: 650px) 100vw, 40vw"
@@ -292,17 +303,11 @@ function Details({
               ))}
             </Slider>
 
-            <Slider.PrevButton
-              class="no-animation absolute left-2 top-1/2 btn btn-circle btn-outline"
-              disabled
-            >
+            <Slider.PrevButton class="no-animation absolute left-2 top-1/2 btn btn-circle btn-outline hidden sm:flex" disabled >
               <Icon size={20} id="ChevronLeft" strokeWidth={3} />
             </Slider.PrevButton>
 
-            <Slider.NextButton
-              class="no-animation absolute right-2 top-1/2 btn btn-circle btn-outline"
-              disabled={images.length < 2}
-            >
+            <Slider.NextButton class="no-animation absolute right-2 top-1/2 btn btn-circle btn-outline hidden sm:flex" disabled={images.length < 2} >
               <Icon size={20} id="ChevronRight" strokeWidth={3} />
             </Slider.NextButton>
 
@@ -337,7 +342,7 @@ function Details({
                 {images.map((img, index) => (
                     <li>
                         <Slider.Dot isMobile={true} index={index}>
-                            <div class="w-3 h-3 group-disabled:bg-primary duration-150 bg-base-200 rounded-full"></div>
+                            <div class="w-4 h-4 group-disabled:bg-primary duration-150 bg-base-200 rounded-full"></div>
                         </Slider.Dot>
                     </li>
                 ))}
@@ -362,15 +367,13 @@ function Details({
                     <Icon class="icon-open" id="ChevronDown" size={20} strokeWidth={3} />
                     <Icon class="icon-closed"id="ChevronUp" size={20} strokeWidth={3} />
                 </summary>
-                <div
-                  class="ml-2 mt-2 overflow-hidden"
-                  dangerouslySetInnerHTML={{ __html: page.product.description }}
-                >
+                <div class="ml-2 mt-2 overflow-hidden mz-prod-summary text-justify" dangerouslySetInnerHTML={{ __html: page.product.description }} >
                 </div>
               </details>
             )}
           </span>
         </div>
+        <ProductSpecification page={page} specificationsToShow={specificationsToShow}/>
       </div>
     );
   }
@@ -414,7 +417,7 @@ function Details({
   );
 }
 
-function ProductDetails( { page, variant: maybeVar = "auto", buyButtomText = "Adicionar à Sacola", shippingText = "Calcular Frete", }: Props, ) {
+function ProductDetails( { page, variant: maybeVar = "auto", buyButtomText = "Adicionar à Sacola", shippingText = "Calcular Frete", specificationsToShow }: Props, ) {
   /**
    * Showcase the different product views we have on this template. In case there are less
    * than two images, render a front-back, otherwhise render a slider
@@ -429,7 +432,7 @@ function ProductDetails( { page, variant: maybeVar = "auto", buyButtomText = "Ad
   return (
     <div class="container py-0 sm:py-10">
       {page ? 
-      ( <Details page={page} variant={variant} buyButtomInnerText={buyButtomText} shippingText={shippingText} /> ) : 
+      ( <Details page={page} variant={variant} buyButtomInnerText={buyButtomText} shippingText={shippingText} specificationsToShow={specificationsToShow} /> ) : 
       <NotFound />}
     </div>
   );

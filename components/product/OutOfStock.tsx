@@ -37,7 +37,7 @@ function Notify({ productID }: Props) {
       <input placeholder="Nome" class="input input-bordered" name="name" />
       <input placeholder="Email" class="input input-bordered" name="email" />
 
-      <button class="btn disabled:loading" disabled={loading}>Enviar</button>
+      <button class="btn btn-block bg-btnDhelf text-white hover:bg-btnHover" disabled={loading}>Enviar</button>
     </form>
   );
 }

@@ -27,6 +27,18 @@
   details:not([open]) summary .icon-open {
     display: none;
   }
+  .mz-prod-summary h1,
+    .mz-prod-summary h2,
+    .mz-prod-summary h3,
+    .mz-prod-summary h4,
+    .mz-prod-summary h5,
+    .mz-prod-summary h6,
+    .mz-prod-summary p,
+    .mz-prod-summary span,
+    .mz-prod-summary li
+  {
+    padding-bottom: 8px;
+  }
 }
 
 @layer components {
