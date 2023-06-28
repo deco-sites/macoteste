@@ -15,6 +15,7 @@ export default {
         white: "#FFF",
         footer: "#1e1e1e",
         btnHover: "#1f2b37",
+        "base-300": "#555",
       },
     },
   },
