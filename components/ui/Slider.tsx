@@ -1,12 +1,14 @@
 import type { ComponentChildren, JSX } from "preact";
 
-function Dot({ index, children }: {
+function Dot({ index, children,isMobile }: {
   index: number;
   children: ComponentChildren;
+    isMobile?: boolean;
 }) {
   return (
     <button
-      data-dot={index}
+      data-dot={!isMobile?index:undefined}
+        data-dot-mobile={isMobile?index:undefined}
       aria-label={`go to slider item ${index}`}
       class="focus:outline-none group"
     >

@@ -53,6 +53,7 @@ const setup = ({ rootId, scroll, interval, infinite }: Props) => {
   const prev = root?.querySelector(`[${ATTRIBUTES['data-slide="prev"']}]`);
   const next = root?.querySelector(`[${ATTRIBUTES['data-slide="next"']}]`);
   const dots = root?.querySelectorAll(`[${ATTRIBUTES["data-dot"]}]`);
+  const dotsMobile = root?.querySelectorAll(`[data-dot-mobile]`);
 
   if (!root || !slider || !items || items.length === 0) {
     console.warn(
@@ -131,11 +132,14 @@ const setup = ({ rootId, scroll, interval, infinite }: Props) => {
       elements.forEach((item) => {
         const index = Number(item.target.getAttribute("data-slider-item")) || 0;
         const dot = dots?.item(index);
+        const mobileDot = dotsMobile?.item(index);
 
         if (item.isIntersecting) {
           dot?.setAttribute("disabled", "");
+          mobileDot?.setAttribute("disabled", "");
         } else {
           dot?.removeAttribute("disabled");
+          mobileDot?.removeAttribute("disabled");
         }
 
         if (!infinite) {
@@ -164,6 +168,10 @@ const setup = ({ rootId, scroll, interval, infinite }: Props) => {
     dots?.item(it).addEventListener("click", () => goToItem(it));
   }
 
+  for (let it = 0; it < (dotsMobile?.length ?? 0); it++) {
+    dotsMobile?.item(it).addEventListener("click", () => goToItem(it));
+  }
+
   prev?.addEventListener("click", onClickPrev);
   next?.addEventListener("click", onClickNext);
 
@@ -173,6 +181,10 @@ const setup = ({ rootId, scroll, interval, infinite }: Props) => {
   return () => {
     for (let it = 0; it < (dots?.length ?? 0); it++) {
       dots?.item(it).removeEventListener("click", () => goToItem(it));
+    }
+
+    for (let it = 0; it < (dotsMobile?.length ?? 0); it++) {
+      dotsMobile?.item(it).addEventListener("click", () => goToItem(it));
     }
 
     prev?.removeEventListener("click", onClickPrev);

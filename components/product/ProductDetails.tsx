@@ -73,10 +73,6 @@ function ProductInfo(
   };
   return (
     <>
-      {/* Breadcrumb */}
-      <Breadcrumb
-        itemListElement={breadcrumbList?.itemListElement.slice(0, -1)}
-      />
       {/* Code and name */}
       <div class="mt-4 sm:mt-8">
         <div>
@@ -256,7 +252,7 @@ function Details({
   buyButtomInnerText: string;
   shippingText: string;
 }) {
-  const { product } = page;
+  const { breadcrumbList,product } = page;
   const id = `product-image-gallery:${useId()}`;
   const images = useStableImages(product);
 
@@ -270,6 +266,8 @@ function Details({
   if (variant === "slider") {
     return (
       <div class="">
+            {/* Breadcrumb */}
+        <Breadcrumb itemListElement={breadcrumbList?.itemListElement.slice(0, -1)} />
         <div
           id={id}
           class="grid grid-cols-1 gap-4 sm:grid-cols-[max-content_40vw_40vw] sm:grid-rows-1 sm:justify-center"
@@ -321,8 +319,8 @@ function Details({
             </div>
           </div>
 
-          {/* Dots */}
-          <ul class="flex gap-2 sm:justify-start overflow-auto px-4 sm:px-0 sm:flex-col sm:col-start-1 sm:col-span-1 sm:row-start-1 max-h-[42rem]">
+          {/* Dots Desktop*/}
+          <ul class="hidden sm:flex gap-2 sm:justify-start overflow-auto px-4 sm:px-0 sm:flex-col sm:col-start-1 sm:col-span-1 sm:row-start-1 max-h-[32rem]">
             {images.map((img, index) => (
               <li class="min-w-[63px] sm:min-w-[100px]">
                 <Slider.Dot index={index}>
@@ -338,7 +336,16 @@ function Details({
               </li>
             ))}
           </ul>
-
+          {/* Dots Mobile*/}
+            <ul class="sm:hidden flex gap-3 justify-center overflow-auto px-4">
+                {images.map((img, index) => (
+                    <li>
+                        <Slider.Dot isMobile={true} index={index}>
+                            <div class="w-3 h-3 group-disabled:bg-primary duration-150 bg-base-200 rounded-full"></div>
+                        </Slider.Dot>
+                    </li>
+                ))}
+            </ul>
           {/* Product Info */}
           <div class="px-4 sm:pr-0 sm:pl-6 sm:col-start-3 sm:col-span-1 sm:row-start-1">
             <ProductInfo
@@ -350,11 +357,11 @@ function Details({
         </div>
         <SliderJS rootId={id}></SliderJS>
 
-        <div class="mt-4 sm:mt-6">
+        <div class="mt-4 sm:mt-6 px-4 sm:pr-0">
           <span class="text-sm">
             {page.product.description && (
-              <details>
-                <summary class="cursor-pointer">Descrição</summary>
+              <details open>
+                <summary class="cursor-pointer text-xl">Descrição</summary>
                 <div
                   class="ml-2 mt-2"
                   dangerouslySetInnerHTML={{ __html: page.product.description }}
@@ -407,14 +414,7 @@ function Details({
   );
 }
 
-function ProductDetails(
-  {
-    page,
-    variant: maybeVar = "auto",
-    buyButtomText = "Adicionar à Sacola",
-    shippingText = "Calcular Frete",
-  }: Props,
-) {
+function ProductDetails( { page, variant: maybeVar = "auto", buyButtomText = "Adicionar à Sacola", shippingText = "Calcular Frete", }: Props, ) {
   /**
    * Showcase the different product views we have on this template. In case there are less
    * than two images, render a front-back, otherwhise render a slider
@@ -428,16 +428,9 @@ function ProductDetails(
 
   return (
     <div class="container py-0 sm:py-10">
-      {page
-        ? (
-          <Details
-            page={page}
-            variant={variant}
-            buyButtomInnerText={buyButtomText}
-            shippingText={shippingText}
-          />
-        )
-        : <NotFound />}
+      {page ? 
+      ( <Details page={page} variant={variant} buyButtomInnerText={buyButtomText} shippingText={shippingText} /> ) : 
+      <NotFound />}
     </div>
   );
 }
