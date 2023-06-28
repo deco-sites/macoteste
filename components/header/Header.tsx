@@ -92,6 +92,7 @@ function Header(
   const searchbar = { ..._searchbar, products, suggestions };
   return (
     <>
+      {/* <div class="fixed top-[38px]"> */}
       <header style={{ height: headerHeight }}>
         <div class="bg-base-100 fixed w-full z-50">
           <div class="container px-4 md:px-0 mx-auto">
@@ -105,6 +106,7 @@ function Header(
           freeShippingTarget={freeShippingSignal.value}
         />
       </header>
+      {/* </div> */}
     </>
   );
 }
