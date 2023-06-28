@@ -232,7 +232,8 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
                     {name}
                   </h2>
                 )}
-              {l?.hide.productDescription ? "" : (
+              {
+                /* {l?.hide.productDescription ? "" : (
                 <p
                   class="truncate text-sm lg:text-sm text-neutral"
                   dangerouslySetInnerHTML={{
@@ -244,7 +245,8 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
                   }}
                 >
                 </p>
-              )}
+              )} */
+              }
             </div>
           )}
         {l?.hide.allPrices ? "" : (
