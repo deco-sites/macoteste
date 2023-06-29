@@ -338,7 +338,7 @@ function Details({
             ))}
           </ul>
           {/* Dots Mobile*/}
-            <ul class="sm:hidden flex gap-3 justify-center overflow-auto px-4">
+            <ul class="sm:hidden flex gap-6 justify-center overflow-auto px-4">
                 {images.map((img, index) => (
                     <li>
                         <Slider.Dot isMobile={true} index={index}>
