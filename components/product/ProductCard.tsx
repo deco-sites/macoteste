@@ -258,13 +258,14 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
                   : ""
               } ${align === "center" ? "justify-center" : "justify-start"}`}
             >
-              <div
+              {listPrice && (price || 0)<listPrice &&
+               <div
                 class={`line-through text-neutral text-xs ${
                   l?.basics?.oldPriceSize === "Normal" ? "lg:text-xl" : ""
                 }`}
               >
                 {formatPrice(listPrice, offers!.priceCurrency!)}
-              </div>
+              </div>}
               <div class="text-accent text-base lg:text-xl">
                 {formatPrice(price, offers!.priceCurrency!)}
               </div>

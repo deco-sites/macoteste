@@ -11948,33 +11948,6 @@
       "required": [],
       "title": "deco-sites/macoteste/sections/Newsletter/Newsletter.tsx@Props"
     },
-    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9wcm9kdWN0L1Byb2R1Y3REZXRhaWxzLnRzeA==@Specifications": {
-      "type": "object",
-      "properties": {
-        "specificationName": {
-          "type": "string",
-          "title": "Specification Name"
-        },
-        "specificationTitle": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "Specification Title"
-        }
-      },
-      "required": [
-        "specificationName"
-      ],
-      "title": "Specifications"
-    },
-    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9wcm9kdWN0L1Byb2R1Y3REZXRhaWxzLnRzeA==@Specifications[]": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9wcm9kdWN0L1Byb2R1Y3REZXRhaWxzLnRzeA==@Specifications"
-      },
-      "title": "Specifications[]"
-    },
     "ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9wcm9kdWN0L1Byb2R1Y3REZXRhaWxzLnRzeA==@Props": {
       "type": "object",
       "properties": {
@@ -12019,7 +11992,26 @@
           "title": "Shipping Text"
         },
         "specificationsToShow": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvY29tcG9uZW50cy9wcm9kdWN0L1Byb2R1Y3REZXRhaWxzLnRzeA==@Specifications[]",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "specificationName": {
+                "type": "string",
+                "title": "Specification Name"
+              },
+              "specificationTitle": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "Specification Title"
+              }
+            },
+            "required": [
+              "specificationName"
+            ]
+          },
           "title": "Especificações do produto"
         }
       },

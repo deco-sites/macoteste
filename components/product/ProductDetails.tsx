@@ -36,14 +36,31 @@ export interface Props {
   /**
    * @title Especificações do produto
    */
-  specificationsToShow?: Specifications[]
+  specificationsToShow?:  {
+  /**
+   * @title Nome da especificação dentro do ambiente Vtex
+   */
+    specificationName: string,
+  /**
+   * @title Nome da especificação a ser exibido na página
+   * @description Caso a especificação seja uma URL de imagem, este nome serã usado como alt da imagem
+   */
+    specificationTitle?: string,
+}[]
 }
 
 
 export interface Specifications {
+  /**
+   * @title Nome da especificação dentro do ambiente Vtex
+   */
     specificationName: string,
+  /**
+   * @title Nome da especificação a ser exibido na página
+   * @description Caso a especificação seja uma URL de imagem, este nome serã usado como alt da imagem
+   */
     specificationTitle?: string,
-};
+}
 
 const WIDTH = 650;
 const HEIGHT = 650;
@@ -95,9 +112,9 @@ function ProductInfo(
       {/* Prices */}
       <div class="mt-4">
         <div class="flex flex-row gap-2 items-center">
-          <span class="line-through text-base-300 text-xs">
+          {listPrice && (price || 0)<listPrice && <span class="line-through text-base-300 text-xs">
             {formatPrice(listPrice, offers!.priceCurrency!)}
-          </span>
+          </span>}
           <span class="font-medium text-xl text-secondary">
             {formatPrice(price, offers!.priceCurrency!)}
           </span>

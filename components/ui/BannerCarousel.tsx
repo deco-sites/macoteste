@@ -80,8 +80,8 @@ function BannerItem({ image, lcp,sizes }: { image: Banner; lcp?: boolean,sizes:S
                     media="(max-width: 767px)"
                     fetchPriority={lcp ? "high" : "auto"}
                     src={mobile}
-                    width={sizes?.mobileHeight || 390}
-                    height={sizes?.mobileWidth || 565}
+                    width={sizes?.mobileWidth || 390}
+                    height={sizes?.mobileHeight || 565}
                 />
                 <Source
                     media="(min-width: 768px)"

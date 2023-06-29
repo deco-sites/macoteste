@@ -28,9 +28,10 @@ function ProductSpecification({ page, specificationsToShow }: Props) {
                             <Icon class="icon-closed" id="ChevronUp" size={20} strokeWidth={3} />
                         </summary>
                         <div class="ml-2 mt-2 text- overflow-hidden mz-prod-summary text-justify" >
-                            {specificationsToShow?.map(({ specificationName, specificationTitle }) => {
-                                const specification = additionalProperty?.find(item => item.name?.toLocaleLowerCase() === specificationName.toLocaleLowerCase())?.value
-                                if (!specification) return null;
+                            {specificationsToShow?.map(({ specificationName = "", specificationTitle }) => {
+                               if(!specificationName) return <></>;
+                                const specification = additionalProperty?.find(item => item.name?.toLocaleLowerCase() === specificationName?.toLocaleLowerCase())?.value
+                                if (!specification) return <></>;
                                 if( regex.test(specification) ) return (
                                     <div>
                                         <img src={specification} alt={specificationTitle} />
