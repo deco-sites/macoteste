@@ -43,9 +43,9 @@ export interface MobileApps {
   /** @description Link to the app */
   android?: string;
   /** @description Android link Aria-label */
-    androidLabel?: string;
-    /** @description Apple link Aria-label */
-    appleLabel?: string;
+  androidLabel?: string;
+  /** @description Apple link Aria-label */
+  appleLabel?: string;
 }
 
 export interface RegionOptions {
@@ -120,7 +120,7 @@ function Footer({
   sections = [],
   social = [],
   payments = [],
-  mobileApps = { apple: "", android: "", androidLabel: "", appleLabel: ""},
+  mobileApps = { apple: "", android: "", androidLabel: "", appleLabel: "" },
   regionOptions = [],
   extraLinks = [],
   backToTheTop,
@@ -178,13 +178,11 @@ function Footer({
               {_apps}
               {_region}
             </div>
-            {/* <Divider /> */}
-            {
-              /* <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10">
+            <Divider />
+            <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10">
               <PoweredBy />
               {_links}
-            </div> */
-            }
+            </div>
           </div>
         )}
         {layout?.variation == "Variation 2" && (
@@ -202,13 +200,11 @@ function Footer({
                 {_sectionLinks}
               </div>
             </div>
-            {/* <Divider /> */}
-            {
-              /* <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10">
+            <Divider />{" "}
+            <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10">
               <PoweredBy />
               {_links}
-            </div> */
-            }
+            </div>
           </div>
         )}
         {layout?.variation == "Variation 3" && (
@@ -228,13 +224,11 @@ function Footer({
                 {_region}
               </div>
             </div>
-            {/* <Divider /> */}
-            {
-              /* <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10">
+            <Divider />
+            <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10">
               <PoweredBy />
               {_links}
-            </div> */
-            }
+            </div>
           </div>
         )}
         {layout?.variation == "Variation 4" && (
@@ -256,13 +250,11 @@ function Footer({
                 {_apps}
               </div>
             </div>
-            {/* <Divider /> */}
-            {
-              /* <div class="flex flex-col md:flex-row md:justify-between gap-10 md:items-center">
+            <Divider />
+            <div class="flex flex-col md:flex-row md:justify-between gap-10 md:items-center">
               {_logo}
               <PoweredBy />
-            </div> */
-            }
+            </div>
           </div>
         )}
         {layout?.variation == "Variation 5" && (
@@ -278,16 +270,14 @@ function Footer({
                 {_apps}
               </div>
             </div>
-            {/* <Divider /> */}
-            {
-              /* <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10 md:items-center">
+            <Divider />
+            <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10 md:items-center">
               <PoweredBy />
               <div class="flex flex-col md:flex-row gap-10 md:items-center">
                 {_links}
                 {_region}
               </div>
-            </div> */
-            }
+            </div>
           </div>
         )}
       </div>
