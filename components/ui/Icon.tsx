@@ -41,7 +41,8 @@ export type AvailableIcons =
   | "XMark"
   | "Zoom"
   | "maeztra"
-  | "vtex";
+  | "vtex"
+  | "YouTube";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**

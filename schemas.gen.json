@@ -8316,6 +8316,11 @@
                     "type": "string",
                     "const": "vtex",
                     "default": "vtex"
+                  },
+                  {
+                    "type": "string",
+                    "const": "YouTube",
+                    "default": "YouTube"
                   }
                 ],
                 "type": "string",
@@ -8914,6 +8919,11 @@
               "type": "string",
               "const": "vtex",
               "default": "vtex"
+            },
+            {
+              "type": "string",
+              "const": "YouTube",
+              "default": "YouTube"
             }
           ],
           "type": "string",
@@ -9641,6 +9651,11 @@
               "type": "string",
               "const": "Tiktok",
               "default": "Tiktok"
+            },
+            {
+              "type": "string",
+              "const": "YouTube",
+              "default": "YouTube"
             },
             {
               "type": "string",
@@ -10400,6 +10415,11 @@
               "type": "string",
               "const": "vtex",
               "default": "vtex"
+            },
+            {
+              "type": "string",
+              "const": "YouTube",
+              "default": "YouTube"
             }
           ],
           "type": "string",
@@ -11560,6 +11580,11 @@
               "type": "string",
               "const": "vtex",
               "default": "vtex"
+            },
+            {
+              "type": "string",
+              "const": "YouTube",
+              "default": "YouTube"
             }
           ],
           "type": "string",
