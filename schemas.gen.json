@@ -96,6 +96,7 @@
               "deco-sites/macoteste/sections/Content/ImageAndText.tsx",
               "deco-sites/macoteste/sections/Content/InfoCard.tsx",
               "deco-sites/macoteste/sections/Content/Logos.tsx",
+              "deco-sites/macoteste/sections/Content/SeoPLP.tsx",
               "deco-sites/macoteste/sections/Content/Testimonials.tsx",
               "deco-sites/macoteste/sections/DesignSystem/DesignSystem.tsx",
               "deco-sites/macoteste/sections/Footer/Footer.tsx",
@@ -9075,6 +9076,106 @@
       "required": [],
       "title": "deco-sites/macoteste/sections/Content/Logos.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9TZW9QTFAudHN4@SeoTexts": {
+      "type": "object",
+      "properties": {
+        "matcher": {
+          "type": "string",
+          "description": "RegExp to enable this banner on the current URL. Use /feminino/* to display this banner on feminino category",
+          "title": "Matcher"
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Título",
+          "default": "Título"
+        },
+        "html": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Corpo do texto",
+          "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"",
+          "format": "html"
+        },
+        "alignDesktop": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "Esquerda",
+              "default": "Esquerda"
+            },
+            {
+              "type": "string",
+              "const": "Direita",
+              "default": "Direita"
+            },
+            {
+              "type": "string",
+              "const": "Centro",
+              "default": "Centro"
+            }
+          ],
+          "type": "string",
+          "title": "Alinhamento do texto no desktop",
+          "default": "Centro"
+        },
+        "alignMobile": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "Esquerda",
+              "default": "Esquerda"
+            },
+            {
+              "type": "string",
+              "const": "Direita",
+              "default": "Direita"
+            },
+            {
+              "type": "string",
+              "const": "Centro",
+              "default": "Centro"
+            }
+          ],
+          "type": "string",
+          "title": "Alinhamento do texto no mobile",
+          "default": "Centro"
+        }
+      },
+      "required": [
+        "matcher"
+      ],
+      "title": "SeoTexts"
+    },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9TZW9QTFAudHN4@SeoTexts[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9TZW9QTFAudHN4@SeoTexts"
+      },
+      "title": "SeoTexts[]"
+    },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9TZW9QTFAudHN4@Props": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@ProductListingPage|null",
+          "title": "Page"
+        },
+        "texts": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9TZW9QTFAudHN4@SeoTexts[]",
+          "title": "Texts"
+        }
+      },
+      "required": [
+        "page",
+        "texts"
+      ],
+      "title": "deco-sites/macoteste/sections/Content/SeoPLP.tsx@Props"
+    },
     "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9UZXN0aW1vbmlhbHMudHN4@Testimonial": {
       "type": "object",
       "properties": {
@@ -15236,6 +15337,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9TZW9QTFAudHN4": {
+      "title": "deco-sites/macoteste/sections/Content/SeoPLP.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9TZW9QTFAudHN4@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/macoteste/sections/Content/SeoPLP.tsx"
+          ],
+          "default": "deco-sites/macoteste/sections/Content/SeoPLP.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9UZXN0aW1vbmlhbHMudHN4": {
       "title": "deco-sites/macoteste/sections/Content/Testimonials.tsx",
       "type": "object",
@@ -16895,6 +17017,9 @@
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9Mb2dvcy50c3g="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9TZW9QTFAudHN4"
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9tYWNvdGVzdGUvc2VjdGlvbnMvQ29udGVudC9UZXN0aW1vbmlhbHMudHN4"
