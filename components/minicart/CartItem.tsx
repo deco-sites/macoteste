@@ -44,7 +44,7 @@ function CartItem({ index, locale, currency }: Props) {
     },
     [loading],
   );
-
+    
   return (
     <div class="flex flex-row justify-between items-start gap-4">
       <Image
@@ -55,7 +55,7 @@ function CartItem({ index, locale, currency }: Props) {
         class="object-cover object-center"
       />
       <div class="flex flex-grow flex-col gap-2">
-        <span>{name}</span>
+        <span>{skuName}</span>
         <div class="flex items-center gap-2">
           <span class="line-through text-base-300 text-sm">
             {formatPrice(listPrice / 100, currency, locale)}
