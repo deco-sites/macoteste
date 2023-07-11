@@ -7656,6 +7656,49 @@
                 "null"
               ],
               "title": "Alt"
+            },
+            "imagesSizes": {
+              "type": "object",
+              "properties": {
+                "mobile": {
+                  "type": "object",
+                  "properties": {
+                    "height": {
+                      "type": "number",
+                      "title": "Height"
+                    },
+                    "width": {
+                      "type": "number",
+                      "title": "Width"
+                    }
+                  },
+                  "required": [
+                    "height",
+                    "width"
+                  ],
+                  "title": "Mobile"
+                },
+                "desktop": {
+                  "type": "object",
+                  "properties": {
+                    "height": {
+                      "type": "number",
+                      "title": "Height"
+                    },
+                    "width": {
+                      "type": "number",
+                      "title": "Width"
+                    }
+                  },
+                  "required": [
+                    "height",
+                    "width"
+                  ],
+                  "title": "Desktop"
+                }
+              },
+              "required": [],
+              "title": "Images Sizes"
             }
           },
           "required": [

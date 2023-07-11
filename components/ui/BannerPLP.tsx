@@ -17,6 +17,17 @@ export interface Banner {
     mobile: LiveImage;
     /** @description image alt text */
     alt?: string;
+    /** @description Set sizes in px to not crop images if they don't match their container size */
+    imagesSizes?: {
+        mobile?: {
+            height: number;
+            width: number;
+        }
+        desktop?: {
+            height: number;
+            width: number;
+        }
+        }
   };
 }
 
@@ -33,14 +44,14 @@ function BannerUI({ banner }: { banner: Banner }) {
       <Picture preload class="col-start-1 col-span-1 row-start-1 row-span-1">
         <Source
           src={image.mobile}
-          width={360}
-          height={120}
+          width={image?.imagesSizes?.mobile?.width?image?.imagesSizes?.mobile?.width:360}
+          height={image?.imagesSizes?.mobile?.height?image?.imagesSizes?.mobile?.height:120}
           media="(max-width: 767px)"
         />
         <Source
           src={image.desktop}
-          width={1440}
-          height={200}
+          width={image?.imagesSizes?.desktop?.width?image.imagesSizes?.desktop?.width:1440}
+          height={image?.imagesSizes?.desktop?.height?image.imagesSizes?.desktop?.height:200}
           media="(min-width: 767px)"
         />
         <img class="w-full" src={image.desktop} alt={image.alt ?? title} />
